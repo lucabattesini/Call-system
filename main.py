@@ -1,36 +1,23 @@
+#Importing pandas and streamlit
 import pandas as pd
 import streamlit as st
-
+#Reading the csv file 
 df = pd.read_csv("./dados.csv")
+#Read header from csv file
 df.head()
-
-#dados = {'nome': ["Luca","Clara","Nick"],
-         #'veio': [0, 0, 0]}
-
-#dfe = pd.DataFrame(dados)
-st.markdown("### Luca")
-if st.button("Veio"):
-    df.loc[df['nome']=='luca', ['presenca']] = 1
-    print(df)
-    df.to_csv('./dados.csv', index=False)
-    #df.at['luca', 'presenca'] = 1
-
-st.markdown("### Clara")
-if st.button("Veio?"):
-    df.loc[df['nome']=='clara', ['presenca']] = 1
-    print(df)
-    df.to_csv('./dados.csv', index=False)
-
-st.markdown("### Nick")
-if st.button("Veio??"):
-    df.loc[df['nome']=='yannick', ['presenca']] = 1
-    print(df)
-    df.to_csv('./dados.csv', index=False)
-
-st.markdown("### Lola")
-if st.button("Veio???"):
-    df.loc[df['nome']=='lola', ['presenca']] = 1
-    print(df)
-    df.to_csv('./dados.csv', index=False)
-
-print(df)
+#Creating a var to create a unique key
+x = int(1)
+#Using for in to read each line of csv file
+for name in df['nome']:
+    #Name of the student formated
+    st.markdown(f"### {name}")
+    #Modifying key number 
+    x = x + 1
+    #Creating a button to check if the student come to class
+    if st.button("Veio?", key=x):
+        #Saving 1 if student come or 0 if isn't
+        df.loc[df['nome']==f'{name}', ['presenca']] = 1
+        #Printing the csv fle
+        print(df)
+        #Saving all changes in the file
+        df.to_csv('./dados.csv', index=False)
