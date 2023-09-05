@@ -19,9 +19,10 @@ for name in df2['first_name']:
     if st.button("Veio?", key=x):
         #Saving 1 if student come or 0 if isn't
         df2.loc[df2['first_name']==f'{name}', ['attendance_total']] = 1
+        dftosave = df2[['student_id', 'attendance_total']]
         #Printing the csv fle
         print(df2)
         #Saving all changes in the file
-        df2.to_csv('./call_list_students_utf-8.csv', index=False)
+        dftosave.to_csv('./attendance_table.csv', index=False)
 print(df)
 print(df2)
