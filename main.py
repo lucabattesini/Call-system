@@ -23,6 +23,7 @@ for name in df2['first_name']:
         #Printing the csv fle
         print(df2)
         #Saving all changes in the file
+        df2.to_csv('./call_list_students_utf-8.csv', index=False)
         dftosave.to_csv('./attendance_table.csv', index=False)
 print(df)
 print(df2)

@@ -1,5 +1,5 @@
 student_id,first_name,last_name,attendance_total,school_year,classroom,last_modified
-1,Adriana,Santos,,1EM,A,
+1,Adriana,Santos,1.0,1EM,A,
 2,Alexandre,Silva,,1EM,B,
 3,Aline,Peixoto,,2EM,A,
 4,Aline,Costa,,3EM,B,
