@@ -8,6 +8,7 @@ df.head()
 df2.head()
 
 x = int(1)
+x1 = 'a'
 data = datetime.now()
 fdata = data.strftime('%d/%m/%y')
 
@@ -19,12 +20,18 @@ for index, row in df2.iterrows():
     st.markdown(f"### {first_name} {last_name}")
 
     x = x + 1
-    if st.button("Veio?", key=x):
+    x1 = x1 + 'b'
+    if st.button("Presente", key=x):
         print(id)
         df2.loc[df2['student_id']==id, 'attendance_total'] += 1
         df2.loc[df2['student_id']==id, 'date'] = fdata
         dftosave = df2[['student_id', 'attendance_total', 'date']]
-        print(dftosave)
+
+    if st.button("Ausente", key=x1):
+        df2.loc[df2['student_id']==id, 'attendance_total'] += 0
+        df2.loc[df2['student_id']==id, 'date'] = fdata
+        dftosave = df2[['student_id', 'attendance_total', 'date']]
+
 df2.to_csv('./call_list_students_utf-8.csv', index=False)
 dftosave.to_csv('./attendance_table.csv', index=False)
 #print(df)
