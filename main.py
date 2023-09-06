@@ -21,7 +21,7 @@ for index, row in df2.iterrows():
     x = x + 1
     if st.button("Veio?", key=x):
         print(id)
-        df2.loc[df2['student_id']==id, 'attendance_total'] = 1
+        df2.loc[df2['student_id']==id, 'attendance_total'] += 1
         df2.loc[df2['student_id']==id, 'date'] = fdata
         dftosave = df2[['student_id', 'attendance_total', 'date']]
         print(dftosave)
