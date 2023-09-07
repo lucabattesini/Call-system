@@ -25,14 +25,13 @@ for index, row in df2.iterrows():
         print(id)
         df2.loc[df2['student_id']==id, 'attendance_total'] += 1
         df2.loc[df2['student_id']==id, 'date'] = fdata
-        dftosave = df2[['student_id', 'attendance_total', 'date']]
+
 
     if st.button("Ausente", key=x1):
         df2.loc[df2['student_id']==id, 'attendance_total'] += 0
         df2.loc[df2['student_id']==id, 'date'] = fdata
-        dftosave = df2[['student_id', 'attendance_total', 'date']]
 
 df2.to_csv('./call_list_students_utf-8.csv', index=False)
-dftosave.to_csv('./attendance_table.csv', index=False)
+df.to_csv('./attendance_table.csv', index=False)
 #print(df)
 #print(df2)
