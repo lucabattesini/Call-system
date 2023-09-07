@@ -22,16 +22,18 @@ for index, row in df2.iterrows():
     x = x + 1
     x1 = x1 + 'b'
     if st.button("Presente", key=x):
-        print(id)
+        df.loc[index] = {'student_id': id, 'attendance_total': 1, 'date': fdata}
         df2.loc[df2['student_id']==id, 'attendance_total'] += 1
         df2.loc[df2['student_id']==id, 'date'] = fdata
-
+        df.to_csv('./attendance_table.csv', index=False)
 
     if st.button("Ausente", key=x1):
+        df.loc[index] = {'student_id': id, 'attendance_total': 0, 'date': fdata}
         df2.loc[df2['student_id']==id, 'attendance_total'] += 0
         df2.loc[df2['student_id']==id, 'date'] = fdata
+        df.to_csv('./attendance_table.csv', index=False)
 
 df2.to_csv('./call_list_students_utf-8.csv', index=False)
-df.to_csv('./attendance_table.csv', index=False)
+
 #print(df)
 #print(df2)
