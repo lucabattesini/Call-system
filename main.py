@@ -1,19 +1,17 @@
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-from functions import call_function
+from functions import compute_attendance
  
-df = pd.read_csv("./attendance_table.csv", encoding='UTF-8')
-df2 = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
-df.head()
-df2.head()
+attendance = pd.read_csv("./attendance_table.csv", encoding='UTF-8')
+student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
+attendance.head()
+student_list.head()
 
-x = int(1)
-x1 = 'a'
-data = datetime.now()
-fdata = data.strftime('%d/%m/%y')
+today = datetime.now()
+ftoday = today.strftime('%d/%m/%y')
 
-call_function(df, df2, x, x1, fdata)
+compute_attendance(attendance, student_list, ftoday)
 
 #print(df)
 #print(df2)
