@@ -2,7 +2,11 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 
-def call_function(df, df2, x, x1, fdata)  :
+def call_function(df, df2) :
+    x = int(1)
+    x1 = 'a'
+    data = datetime.now()
+    fdata = data.strftime('%d/%m/%y')
     for index, row in df2.iterrows():
         id = row['student_id']
         first_name = row['first_name']
@@ -23,4 +27,4 @@ def call_function(df, df2, x, x1, fdata)  :
             df2.loc[df2['student_id']==id, 'attendance_total'] += 0
             df2.loc[df2['student_id']==id, 'date'] = fdata
             df.to_csv('./attendance_table.csv', index=False)
-    df2.to_csv('./call_list_students_utf-8.csv', index=False)
+        df2.to_csv('./call_list_students_utf-8.csv', index=False)

@@ -1,7 +1,7 @@
 student_id,first_name,last_name,attendance_total,school_year,classroom,last_modified,date
-1,Adriana,Santos,,1EM,A,,07/09/23
-2,Alexandre,Silva,,1EM,B,,07/09/23
-3,Aline,Peixoto,,2EM,A,,07/09/23
+1,Adriana,Santos,,1EM,A,,08/09/23
+2,Alexandre,Silva,,1EM,B,,08/09/23
+3,Aline,Peixoto,,2EM,A,,08/09/23
 4,Aline,Costa,,3EM,B,,07/09/23
 5,Amanda,Pinheiro,,1EM,A,,07/09/23
 6,Ana,Sales,,2EM,B,,07/09/23
@@ -19,9 +19,9 @@ student_id,first_name,last_name,attendance_total,school_year,classroom,last_modi
 18,Carolina,Barcelos,,2EM,B,,
 19,Clara,Siqueira,,1EM,A,,
 20,Cláudia,Pinto,,2EM,B,,
-21,Daniel,Lima,,3EM,A,,
-22,Daniel,Gomes,,1EM,B,,
-23,Daniela,Alvim,,2EM,A,,
+21,Daniel,Lima,,3EM,A,,08/09/23
+22,Daniel,Gomes,,1EM,B,,08/09/23
+23,Daniela,Alvim,,2EM,A,,08/09/23
 24,Davi,Costa,,3EM,B,,
 25,Eduardo,Ribeiro,,1EM,A,,
 26,Eduardo,Martins,,2EM,B,,

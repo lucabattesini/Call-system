@@ -8,12 +8,7 @@ df2 = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
 df.head()
 df2.head()
 
-x = int(1)
-x1 = 'a'
-data = datetime.now()
-fdata = data.strftime('%d/%m/%y')
-
-call_function(df, df2, x, x1, fdata)
+call_function(df, df2)
 
 #print(df)
 #print(df2)
