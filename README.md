@@ -13,7 +13,7 @@ install the virtualenv with that code in terminal
 
 Run the virtualenv with that code in terminal
 
-    name-of-virtualenv-scripts-activate
+    name-of-virtualenv/scripts/activate
 
 Install streamlit with that code in terminal (You need to have your virtualenv runing to do it)
 
