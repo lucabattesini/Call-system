@@ -29,5 +29,7 @@ def call_list_sum(attendance, student_list):
             if id == id2:
                 if value == 1:
                     x = x + 1
-        
+        student_list.loc[student_list['student_id'] == id, 'attendance_total'] += x
+        save = student_list['attendance_total']
+        save.to_csv('./call_list_students_utf-8.csv', index=False)
         print(x)
