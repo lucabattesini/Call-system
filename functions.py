@@ -22,6 +22,7 @@ def compute_attendance(attendance, student_list, fdata):
 def call_list_sum(attendance, student_list):
     for i, row in student_list.iterrows():
         id = row['student_id']
+        print(id)
         x = 0
         for index, row2 in attendance.iterrows():
             id2 = row2['student_id']
@@ -29,7 +30,6 @@ def call_list_sum(attendance, student_list):
             if id == id2:
                 if value == 1:
                     x = x + 1
-        student_list.loc[student_list['student_id'] == id, 'attendance_total'] += x
-        save = student_list['attendance_total']
-        save.to_csv('./call_list_students_utf-8.csv', index=False)
-        print(x)
+        print(id2)
+        student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x
+        student_list.to_csv('./call_list_students_utf-8.csv', index=False)
