@@ -9,13 +9,13 @@ The main objective of this site is make easier the school attendance calls
 
 install the virtualenv with that code in terminal
 
-    python -m venv name-of-virtualenv
+    python -m venv venv
 
 Run the virtualenv with that code in terminal
 
-    name-of-virtualenv/scripts/activate
+    name-of-venv/scripts/activate
 
-Install streamlit with that code in terminal (You need to have your virtualenv runing to do it)
+Install streamlit with that code in terminal (You need to have your venv runing to do it)
 
     pip install streamlit
 
