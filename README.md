@@ -15,9 +15,9 @@ Run the virtualenv with that code in terminal
 
     name-of-venv/scripts/activate
 
-Install streamlit with that code in terminal (You need to have your venv runing to do it)
+Install the requierements in your machine with this code(The venv need to be activated)
 
-    pip install streamlit
+    pip install -r requirements.txt
 
 ## Runing the program
 To run that program with the installation instructions and with the virtualenv activated. You just need to run this code to open it in web.
