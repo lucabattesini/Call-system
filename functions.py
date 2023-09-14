@@ -29,7 +29,7 @@ def call_list_sum(attendance, student_list):
             value = row2['attendance']
             if id == id2:
                 if value == 1:
-                    x = x + 1
-        print(id2)
+                  x = x + 1
         student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x
-        student_list.to_csv('./call_list_students_utf-8.csv', index=False)
+    student_list.to_csv('./call_list_students_utf-8.csv', index=False)
+    print(id2)

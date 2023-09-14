@@ -12,7 +12,8 @@ today = datetime.now()
 ftoday = today.strftime('%d/%m/%y')
 
 compute_attendance(attendance, student_list, ftoday)
-call_list_sum(attendance, student_list)
+if st.button("Contar", key='ola'):
+    call_list_sum(attendance, student_list)
 
 #print(df)
 #print(df2)
