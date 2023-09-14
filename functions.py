@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-def compute_attendance(attendance, student_list, fdata):
+def compute_attendance(attendance, student_list, fdata, materias):
     for index, row in student_list.iterrows():
         id = row['student_id']
         first_name = row['first_name']
@@ -10,11 +10,11 @@ def compute_attendance(attendance, student_list, fdata):
         st.markdown(f"### {first_name} {last_name}")
 
         if st.button("Presente", key=f'{index}_Presente'):
-            row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [fdata]})
+            row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [fdata], 'subject': [materias]})
             attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
         if st.button("Ausente", key=f'{index}_Ausente'):
-            row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [fdata]})
+            row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [fdata], 'subject': [materias]})
             attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
     attendance.to_csv('./attendance_table.csv', index=False)
@@ -33,3 +33,10 @@ def call_list_sum(attendance, student_list):
         student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x
     student_list.to_csv('./call_list_students_utf-8.csv', index=False)
     print(id2)
+
+def side_bar(attendance, student_list, fdata, side, materias):
+    for subject in materias:
+        if side == subject:
+            compute_attendance(attendance, student_list, fdata, subject)
+            if st.button("Contar", key='ola'):
+                call_list_sum(attendance, student_list)
