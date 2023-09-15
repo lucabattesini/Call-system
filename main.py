@@ -10,7 +10,7 @@ student_list.head()
 
 today = datetime.now()
 ftoday = today.strftime('%d/%m/%y')
-subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Física','Geografia','História','Sociologia','Filosofia']
+subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
 sidebar = st.sidebar.selectbox("Selecione uma matéria", subject_list)
 
 side_bar(attendance, student_list, ftoday, sidebar, subject_list)
