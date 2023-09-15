@@ -13,7 +13,7 @@ install the virtualenv with that code in terminal
 
 Run the virtualenv with that code in terminal
 
-    name-of-venv/scripts/activate
+    venv/scripts/activate
 
 Install the requierements in your machine with this code(The venv need to be activated)
 
