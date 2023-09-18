@@ -6,6 +6,9 @@ The main objective of this site is make easier the school attendance calls
 - Streamlit
 - Pandas
 ## Installing the requirements
+download and install python from this link
+
+    https://www.python.org/
 
 install the virtualenv with that code in terminal
 
