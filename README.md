@@ -12,7 +12,7 @@ download and install python from this link
 
 install the virtualenv with that code in terminal
 
-    python -m venv venv
+    python3 -m venv virtualenv
 
 Run the virtualenv with that code in terminal
 
@@ -26,3 +26,6 @@ Install the requierements in your machine with this code(The venv need to be act
 To run that program with the installation instructions and with the virtualenv activated. You just need to run this code to open it in web.
 
     streamlit run main.py
+
+## Possible errors
+
