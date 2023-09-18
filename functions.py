@@ -18,7 +18,7 @@ def compute_attendance(attendance, student_list, fdata, materias):
             if st.button("Ausente", key=f'{index}_ausente'):
                 row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [fdata], 'subject': [materias]})
                 attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
-
+        st.markdown('---')
     attendance.to_csv('./attendance_table.csv', index=False)
 
 def call_list_sum(attendance, student_list):

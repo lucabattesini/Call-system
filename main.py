@@ -13,6 +13,17 @@ ftoday = today.strftime('%d/%m/%y')
 subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
 sidebar = st.sidebar.selectbox("Selecione uma matéria", subject_list)
 
+col1, col2 = st.columns(2)
+col1.title('Alunos')
+col2.title('Presença')
+
+with col1:
+    st.markdown('')
+with col2:
+    st.markdown('')
+
+st.markdown('---')
+
 side_bar(attendance, student_list, ftoday, sidebar, subject_list)
 
 #print(df)
