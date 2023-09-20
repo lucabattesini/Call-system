@@ -72,3 +72,18 @@ def dateweek(fdata) :
         name_of_day = day_name.strftime("%A")
         name_in_portuguese = translated_names.get(name_of_day)
         week_days_name.append(name_in_portuguese)
+
+def columns() :
+    column1, column2, column3, column4, column5, column6 = st.columns(6)
+    with column1:
+        st.markdown('')
+    with column2:
+        st.markdown('')
+    with column3:
+        st.markdown('')
+    with column4:
+        st.markdown('')
+    with column5:
+        st.markdown('')
+    with column6:
+        st.markdown('')
