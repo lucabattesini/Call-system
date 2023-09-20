@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import datetime as datetime
 
 def compute_attendance(attendance, student_list, fdata, materias):
     for index, row in student_list.iterrows():
@@ -42,3 +43,20 @@ def side_bar(attendance, student_list, fdata, side, materias):
             compute_attendance(attendance, student_list, fdata, subject)
             if st.button("Contar", key='ola'):
                 call_list_sum(attendance, student_list)
+
+def dateweek(fdata) :
+    week_day = fdata.weekday()
+    week_start = fdata - datetime.timedelta(days=week_day)
+    week_end = week_start + datetime.timedelta(days=6)
+    temporary_list = [1, 2, 3, 4, 5, 6, 7]
+    day = 0
+    week_days = []
+    formated_week_days = []
+    for n in temporary_list:
+        delta = datetime.timedelta(days=day)
+        new_date = week_start + delta
+        week_days.append(new_date)
+        day = day + 1
+    for data in week_days:
+        especific_week_day = data.strftime('%d/%m/%y')
+        formated_week_days.append(especific_week_day)

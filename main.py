@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-from functions import compute_attendance, call_list_sum, side_bar
+from functions import compute_attendance, call_list_sum, side_bar, dateweek
  
 attendance = pd.read_csv("./attendance_table.csv", encoding='UTF-8')
 student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
@@ -26,5 +26,6 @@ st.markdown('---')
 
 side_bar(attendance, student_list, ftoday, sidebar, subject_list)
 
+dateweek(today)
 #print(df)
 #print(df2)
