@@ -24,10 +24,13 @@ with col2:
 
 st.markdown('---')
 
-columns()
 
 side_bar(attendance, student_list, ftoday, sidebar, subject_list)
 
 dateweek(today)
+
+lista = dateweek(today)
+
+columns(lista)
 #print(df)
 #print(df2)
