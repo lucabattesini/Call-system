@@ -78,14 +78,6 @@ def call_list_sum(attendance, student_list):
     student_list.to_csv('./call_list_students_utf-8.csv', index=False)
 
 
-def side_bar(attendance, student_list, fdata, side, materias, dateweek, today, lista):
-    for subject in materias:
-        if side == subject:
-            compute_attendance(attendance, student_list, fdata, subject, dateweek, today, lista)
-            if st.button("Contar", key='ola'):
-                call_list_sum(attendance, student_list)
-
-
 def dateweek(fdata) :
     week_day = fdata.weekday()
     week_start = fdata - datetime.timedelta(days=week_day)
@@ -118,3 +110,12 @@ def dateweek(fdata) :
         name_in_portuguese = translated_names.get(name_of_day)
         week_days_name.append(name_in_portuguese)
     return formated_week_days
+
+
+def side_bar(attendance, student_list, fdata, side, materias, dateweek, today, lista):
+    for subject in materias:
+        if side == subject:
+            compute_attendance(attendance, student_list, fdata, subject, dateweek, today, lista)
+            if st.button("Contar", key='ola'):
+                call_list_sum(attendance, student_list)
+

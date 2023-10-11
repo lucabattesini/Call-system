@@ -15,7 +15,6 @@ ftoday = today.strftime('%d/%m/%y')
 subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
 sidebar = st.sidebar.selectbox("Selecione uma matéria", subject_list)
 
-
 lista = dateweek(today)
 
 col1, col2, col3, col4, col5, col6 = st.columns(6)

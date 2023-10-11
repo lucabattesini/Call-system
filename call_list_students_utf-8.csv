@@ -1,6 +1,6 @@
 student_id,first_name,last_name,attendance_total,school_year,classroom,last_modified,date
-1,Adriana,Santos,3.0,1EM,A,,08/09/23
-2,Alexandre,Silva,0.0,1EM,B,,08/09/23
+1,Adriana,Santos,14.0,1EM,A,,08/09/23
+2,Alexandre,Silva,1.0,1EM,B,,08/09/23
 3,Aline,Peixoto,0.0,2EM,A,,08/09/23
 4,Aline,Costa,0.0,3EM,B,,07/09/23
 5,Amanda,Pinheiro,0.0,1EM,A,,07/09/23
@@ -96,6 +96,6 @@ student_id,first_name,last_name,attendance_total,school_year,classroom,last_modi
 95,Tiago,Amaral,0.0,3EM,A,,
 96,Valentina,Caldeira,0.0,1EM,B,,
 97,Vanessa,Ramos,0.0,2EM,A,,
-98,Vinícius,Mendes,0.0,3EM,B,,
-99,Vinícius,Fonseca,2.0,1EM,A,,
-100,Vívian,Alencar,4.0,2EM,B,,
+98,Vinícius,Mendes,1.0,3EM,B,,
+99,Vinícius,Fonseca,4.0,1EM,A,,
+100,Vívian,Alencar,7.0,2EM,B,,
