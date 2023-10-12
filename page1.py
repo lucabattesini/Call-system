@@ -19,13 +19,13 @@ ftoday = today.strftime('%d/%m/%y')
 serie_list = ['Turma', '1EM A', '1EM B', '2EM A', '2EM B']
 subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
 lista = dateweek(today)
-list1 = ['Ir a lista de chamada']
+list1 = ["Ir a lista de chamada?", "Sim"]
 
 #Page
 st.markdown("## Selecione uma turma")
 
 select1 = st.selectbox("Escolha a turma:", serie_list)
     
-page = st.selectbox("Ir a lista de chamada", list1):
-if page == 'Ir a lista de chamada':    
-    call_page()
+page = st.selectbox("Ir a lista de chamada", list1)
+if page == "Sim":    
+    call_page(select1)

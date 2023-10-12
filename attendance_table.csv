@@ -1,42 +1,43 @@
-student_id,attendance,date,subject
-1,1,14/09/23,Matemática
-1,1,14/09/23,Inglês
-1,1,15/09/23,Química
-100,1,15/09/23,Biologia
-100,1,15/09/23,Física
-99,1,15/09/23,Física
-100,1,15/09/23,Física
-100,1,15/09/23,Matemática
-99,1,15/09/23,Matemática
-100,1,15/09/23,Matemática
-99,1,15/09/23,Matemática
-99,0,15/09/23,Matemática
-100,0,15/09/23,Matemática
-98,1,15/09/23,Matemática
-100,1,15/09/23,Biologia
-99,1,15/09/23,Biologia
-99,0,15/09/23,Biologia
-100,0,15/09/23,Biologia
-100,1,22/09/23,Matemática
-1,1,25/09/23,Matemática
-1,1,25/09/23,Matemática
-1,0,25/09/23,Matemática
-1,1,25/09/23,Matemática
-1,0,25/09/23,Matemática
-1,1,26/09/23,Matemática
-1,1,26/09/23,Matemática
-1,1,25/09/23,Matemática
-1,1,29/09/23,Matemática
-1,1,25/09/23,Português
-2,1,25/09/23,Português
-1,1,25/09/23,Português
-1,1,25/09/23,Português
-1,1,02/10/23,Inglês
-1,1,09/10/23,1EM B
-2,1,09/10/23,1EM B
-1,1,09/10/23,2EM B
-1,1,09/10/23,2EM B
-2,1,10/10/23,2EM B
-3,1,09/10/23,2EM B
-1,1,09/10/23,Matemática
-100,1,09/10/23,Matemática
+student_id,attendance,date,subject,class
+1,1,14/09/23,Matemática,
+1,1,14/09/23,Inglês,
+1,1,15/09/23,Química,
+100,1,15/09/23,Biologia,
+100,1,15/09/23,Física,
+99,1,15/09/23,Física,
+100,1,15/09/23,Física,
+100,1,15/09/23,Matemática,
+99,1,15/09/23,Matemática,
+100,1,15/09/23,Matemática,
+99,1,15/09/23,Matemática,
+99,0,15/09/23,Matemática,
+100,0,15/09/23,Matemática,
+98,1,15/09/23,Matemática,
+100,1,15/09/23,Biologia,
+99,1,15/09/23,Biologia,
+99,0,15/09/23,Biologia,
+100,0,15/09/23,Biologia,
+100,1,22/09/23,Matemática,
+1,1,25/09/23,Matemática,
+1,1,25/09/23,Matemática,
+1,0,25/09/23,Matemática,
+1,1,25/09/23,Matemática,
+1,0,25/09/23,Matemática,
+1,1,26/09/23,Matemática,
+1,1,26/09/23,Matemática,
+1,1,25/09/23,Matemática,
+1,1,29/09/23,Matemática,
+1,1,25/09/23,Português,
+2,1,25/09/23,Português,
+1,1,25/09/23,Português,
+1,1,25/09/23,Português,
+1,1,02/10/23,Inglês,
+1,1,09/10/23,1EM B,
+2,1,09/10/23,1EM B,
+1,1,09/10/23,2EM B,
+1,1,09/10/23,2EM B,
+2,1,10/10/23,2EM B,
+3,1,09/10/23,2EM B,
+1,1,09/10/23,Matemática,
+100,1,09/10/23,Matemática,
+1,1,09/10/23,Matemática,1EM B
