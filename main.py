@@ -14,12 +14,12 @@ def call_page() :
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
     subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
-    serie_list = ['1EM A', '1EM B', '2EM A', '2EM B']
+    serie_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
+
 
     st.sidebar.header("Escolha uma matéria e uma turma")
     materia = st.sidebar.selectbox("Matéria", subject_list)
     turma = st.sidebar.selectbox("Turma", serie_list)
-
     lista = dateweek(today)
 
     col1, col2, col3, col4, col5, col6 = st.columns(6)

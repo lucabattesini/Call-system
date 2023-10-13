@@ -7,57 +7,60 @@ def compute_attendance(attendance, student_list, fdata, materias, dateweek, toda
         id = row['student_id']
         first_name = row['first_name']
         last_name = row['last_name']
+        serie = row['school_year']
+        serie_tipo = row['classroom']
+        real_serie = serie + serie_tipo
 
         column1, column2, column3, column4, column5, column6 = st.columns(6)
+        if real_serie == classes:
+            with column1:
+                st.markdown(f"### {first_name} {last_name}")
 
-        with column1:
-            st.markdown(f"### {first_name} {last_name}")
+            with column2:
+                if st.button("Presente", key=f'{index}_presente'):
+                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[0]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
-        with column2:
-            if st.button("Presente", key=f'{index}_presente'):
-                row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[0]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                if st.button("Ausente", key=f'{index}_ausente'):
+                    row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[0]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                    
+            with column3:
+                if st.button("Presente", key=f'{index}_presente' * 11):
+                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[1]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
-            if st.button("Ausente", key=f'{index}_ausente'):
-                row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[0]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
-                
-        with column3:
-            if st.button("Presente", key=f'{index}_presente' * 11):
-                row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[1]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                if st.button("Ausente", key=f'{index}_ausente' * 11):
+                    row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[1]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                    
+            with column4:
+                if st.button("Presente", key=f'{index}_presente' * 13):
+                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[2]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
-            if st.button("Ausente", key=f'{index}_ausente' * 11):
-                row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[1]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
-                
-        with column4:
-            if st.button("Presente", key=f'{index}_presente' * 13):
-                row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[2]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                if st.button("Ausente", key=f'{index}_ausente' * 13):
+                    row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[2]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
-            if st.button("Ausente", key=f'{index}_ausente' * 13):
-                row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[2]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+            with column5:
+                if st.button("Presente", key=f'{index}_presente' * 17):
+                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[3]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
-        with column5:
-            if st.button("Presente", key=f'{index}_presente' * 17):
-                row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[3]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                if st.button("Ausente", key=f'{index}_ausente' * 17):
+                    row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[3]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
-            if st.button("Ausente", key=f'{index}_ausente' * 17):
-                row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[3]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+            with column6:
+                if st.button("Presente", key=f'{index}_presente' * 23):
+                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[4]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
-        with column6:
-            if st.button("Presente", key=f'{index}_presente' * 23):
-                row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[4]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
-
-            if st.button("Ausente", key=f'{index}_ausente' * 23):
-                row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[4]], 'subject': [materias], 'class': [classes]})
-                attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
-        st.markdown('---')
+                if st.button("Ausente", key=f'{index}_ausente' * 23):
+                    row = pd.DataFrame({'student_id': [id], 'attendance': [0],'date': [lista[4]], 'subject': [materias], 'class': [classes]})
+                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+            st.markdown('---')
     attendance.to_csv('./attendance_table.csv', index=False)
 
 
