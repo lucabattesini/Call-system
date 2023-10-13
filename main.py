@@ -5,7 +5,7 @@ from functions import compute_attendance, call_list_sum, side_bar, dateweek
 
 st.set_page_config (layout="wide")
 
-def call_page(classes) :
+def call_page() :
     attendance = pd.read_csv("./attendance_table.csv", encoding='UTF-8')
     student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
     attendance.head()
@@ -14,9 +14,11 @@ def call_page(classes) :
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
     subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
+    serie_list = ['1EM A', '1EM B', '2EM A', '2EM B']
 
-
-    sidebar = st.sidebar.selectbox("Selecione uma matéria", subject_list)
+    st.sidebar.header("Escolha uma matéria e uma turma")
+    materia = st.sidebar.selectbox("Matéria", subject_list)
+    turma = st.sidebar.selectbox("Turma", serie_list)
 
     lista = dateweek(today)
 
@@ -30,5 +32,5 @@ def call_page(classes) :
     col6.header(lista[4])
     st.markdown('---')
 
-    side_bar(attendance, student_list, ftoday, sidebar, subject_list, dateweek, today, lista, classes)
+    side_bar(attendance, student_list, ftoday, materia, subject_list, dateweek, today, lista, turma)
     dateweek(today)

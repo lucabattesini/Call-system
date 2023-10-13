@@ -16,16 +16,12 @@ today = datetime.now()
 ftoday = today.strftime('%d/%m/%y')
 
 #Lists
-serie_list = ['Turma', '1EM A', '1EM B', '2EM A', '2EM B']
-subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
 lista = dateweek(today)
-list1 = ["Ir a lista de chamada?", "Sim"]
+
 
 #Page
-st.markdown("## Selecione uma turma")
+st.markdown("# Selecione uma turma e uma matéria na barra lateral")
 
-select1 = st.selectbox("Escolha a turma:", serie_list)
-    
-page = st.selectbox("Ir a lista de chamada", list1)
-if page == "Sim":    
-    call_page(select1)
+
+
+call_page()
