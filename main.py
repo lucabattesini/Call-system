@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from perfil import perfil
+from search import perfil
 from chamada import select
 from menu import menu
 

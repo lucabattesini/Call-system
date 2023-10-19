@@ -1,24 +1,10 @@
-import pandas as pd
 import streamlit as st
+import pandas as pd
 
-def perfil() :
-    student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
-    subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
-    serie_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
-
-    st.markdown("### Pesquise o perfil do aluno utilizando as instruções abaixo")
-
-    turma = st.selectbox("Selecione uma turma", serie_list)
-
-    study_search = st.text_input("Pesquise pelo primeiro nome do aluno")
-
-
-    for index, row in student_list.iterrows():
-            serie = row['school_year']
-            serie_tipo = row['classroom']
-            real_serie = serie + serie_tipo
-            first_name = row['first_name']
-            if real_serie == turma:
-                if first_name.lower() == study_search:
-                        if st.button(first_name):
-                            st.markdown("Funcionou")
+def perfil2(first_name, last_name, id, student_class) :
+    coluna, coluna1 = st.columns(2)
+    aluno = first_name + ' ' + last_name
+    with coluna:
+        st.markdown(f'# {aluno}')
+    with coluna1:
+        st.markdown(f'# {student_class}')
