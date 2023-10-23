@@ -119,6 +119,6 @@ def side_bar(attendance, student_list, fdata, side, materias, dateweek, today, l
     for subject in materias:
         if side == subject:
             compute_attendance(attendance, student_list, fdata, subject, dateweek, today, lista, classes)
-            if st.button("Contar", key='ola'):
+            if st.button("Salvar", key='ola'):
                 call_list_sum(attendance, student_list)
 

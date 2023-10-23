@@ -22,7 +22,11 @@ def perfil() :
             first_name = row['first_name']
             last_name = row['last_name']
             if real_serie == turma:
-                if first_name.lower() == study_search:
-                        if st.button(first_name):
+                if study_search == '':
+                      if st.button(first_name, key=id):
+                            perfil2(first_name, last_name, id, real_serie)
+                
+                elif first_name.lower() == study_search:
+                        if st.button(first_name, key=id):
                             st.markdown("Funcionou")
                             perfil2(first_name, last_name, id, real_serie)
