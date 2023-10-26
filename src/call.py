@@ -6,8 +6,8 @@ from functions import compute_attendance, call_list_sum, side_bar, dateweek
 st.set_page_config (layout="wide")
 
 def select() :
-    attendance = pd.read_csv("./attendance_table.csv", encoding='UTF-8')
-    student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
+    attendance = pd.read_csv("./attendance.csv", encoding='UTF-8')
+    student_list = pd.read_csv("./student_info_utf-8.csv", encoding="UTF-8")
     attendance.head()
     student_list.head()
 

@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from perfil import perfil2
+from profile_1 import perfil2
 
 def perfil() :
     student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
