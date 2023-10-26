@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-from functions import compute_attendance, call_list_sum, side_bar, dateweek
+from functions import call_list_buttons, call_list_sum, pages_sidebar, dateweek
 
 st.set_page_config (layout="wide")
 
@@ -37,5 +37,5 @@ def select_class_subject() :
     col6.header(date_week[4])
     st.markdown('---')
 
-    side_bar(attendance, student_list, ftoday, subject, subject_list, dateweek, today, date_week, student_class)
+    pages_sidebar(attendance, student_list, ftoday, subject, subject_list, dateweek, today, date_week, student_class)
     dateweek(today)

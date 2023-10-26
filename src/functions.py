@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import datetime as datetime
 
-def compute_attendance(attendance, student_list, fdata, materias, dateweek, today, lista, classes):
+def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today, lista, classes):
     for index, row in student_list.iterrows():
         id = row['student_id']
         first_name = row['first_name']
@@ -96,10 +96,10 @@ def dateweek(fdata) :
     return formated_week_days
 
 
-def side_bar(attendance, student_list, fdata, side, materias, dateweek, today, lista, classes):
+def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, today, lista, classes):
     for subject in materias:
         if side == subject:
-            compute_attendance(attendance, student_list, fdata, subject, dateweek, today, lista, classes)
+            call_list_buttons(attendance, student_list, fdata, subject, dateweek, today, lista, classes)
             if st.button("Salvar", key='ola'):
                 call_list_sum(attendance, student_list)
 
