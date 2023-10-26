@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from search import perfil
-from chamada import select
+from call import select
 from menu import menu
 
 page = st.sidebar.radio('Paginas', ['Menu','Chamada', 'Perfil do aluno'])
