@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from search import profile
+from search import search_profile
 from call import select_class_subject
 from menu import menu
 
@@ -13,4 +13,4 @@ if page == 'Chamada':
     select_class_subject()
 
 if page == 'Perfil do aluno':
-    profile()
+    search_profile()
