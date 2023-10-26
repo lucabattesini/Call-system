@@ -1,8 +1,8 @@
 import pandas as pd
 import streamlit as st
-from profile_1 import perfil2
+from profile_1 import show_profile
 
-def perfil() :
+def search_profile() :
     student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
     subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
     serie_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
@@ -24,9 +24,9 @@ def perfil() :
             if real_serie == turma:
                 if study_search == '':
                       if st.button(first_name, key=id):
-                            perfil2(first_name, last_name, id, real_serie)
+                            show_profile(first_name, last_name, id, real_serie)
                 
                 elif first_name.lower() == study_search:
                         if st.button(first_name, key=id):
                             st.markdown("Funcionou")
-                            perfil2(first_name, last_name, id, real_serie)
+                            show_profile(first_name, last_name, id, real_serie)
