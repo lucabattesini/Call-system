@@ -42,7 +42,7 @@ def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today
                     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
 
             st.markdown('---')
-    attendance.to_csv('./attendance_table.csv', index=False)
+    attendance.to_csv('./db/attendance.csv', index=False)
 
 
 
