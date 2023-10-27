@@ -7,7 +7,7 @@ st.set_page_config (layout="wide")
 
 def select_class_subject() :
     attendance = pd.read_csv("./db/attendance.csv", encoding='UTF-8')
-    student_list = pd.read_csv("./db/student_info_utf-8.csv", encoding="UTF-8")
+    student_list = pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
     attendance.head()
     student_list.head()
 
