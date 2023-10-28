@@ -67,3 +67,44 @@ def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, tod
             call_list_buttons(attendance, student_list, fdata, subject, dateweek, today, lista, classes)
             if st.button("Salvar", key='ola'):
                 call_list_sum(attendance, student_list)
+                
+                
+# --- CREATE
+
+def create_attendance(student_id, class_id, subject_id, date):
+    # Verificar se essas informações existem se não retorna erro
+    # Inserir uma linha com esses registros em attendance
+    # retorna a attendance
+    return
+
+# --- READ (get)
+
+def get_attendances_by_student(student_id, date=None):
+    # Verificar se essas informações existem se não retorna erro
+    # Procurar no csv por attendences para esse student nessas datas
+    # retorna a lista com o resultado
+    return []
+
+# Criar outras funções para trazer a lista de várias attendances por:
+    # Class -> get_attendances_by_class
+    # Subject -> get_attendances_by_subject
+    # Date -> get_attendances_by_date
+    
+# --- UPDATE
+
+# * Precisa fazer com que attendance tenha um identificador único
+
+def update_attendance(id, new_call_value, subject=None):
+    # Verificar se essa attendance existe, se não retorna erro
+    # Sobrescrever as informações com a informação nova
+    # Verificar se subject é None, se sim, não sobrescrever informação
+    # retornar a attendance atualizada
+    return 
+
+# --- DELETE
+
+def delete_attendace(id):
+    # Verificar se essa attendance existe, se não retorna erro
+    # deletar a linha com o id
+    # retornar a attendance deletada
+    return
