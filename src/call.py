@@ -1,7 +1,8 @@
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-from call_functions import pages_sidebar, dateweek
+from call_functions import pages_sidebar
+from utils import dateweek
 
 st.set_page_config (layout="wide")
 
