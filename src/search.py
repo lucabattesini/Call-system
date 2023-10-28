@@ -3,7 +3,7 @@ import streamlit as st
 from search_functions import student_search
 
 def search_profile() :
-    student_list = pd.read_csv("./call_list_students_utf-8.csv", encoding="UTF-8")
+    student_list = pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
     subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
     serie_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
 
