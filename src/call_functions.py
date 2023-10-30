@@ -18,8 +18,7 @@ def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today
 
             with column2:
                 if st.button("Presente", key=f'{index}_presente'):
-                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[0]], 'subject': [materias], 'class': [classes]})
-                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                    attendance = create_attendance(row, attendance, id, classes, materias, lista)
                     
             with column3:
                 if st.button("Presente", key=f'{index}_presente' * 11):
@@ -71,11 +70,13 @@ def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, tod
                 
 # --- CREATE
 
-def create_attendance(student_id, class_id, subject_id, date):
+def create_attendance(row, attendance, student_id, class_id, subject_id, date):
+    row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date[0]], 'subject': [subject_id], 'class': [class_id]})
+    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     # Verificar se essas informações existem se não retorna erro
     # Inserir uma linha com esses registros em attendance
     # retorna a attendance
-    return
+    return attendance
 
 # --- READ (get)
 
