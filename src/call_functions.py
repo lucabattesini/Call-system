@@ -18,27 +18,23 @@ def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today
 
             with column2:
                 if st.button("Presente", key=f'{index}_presente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, lista)
+                    attendance = create_attendance(row, attendance, id, classes, materias, lista[0])
                     
             with column3:
                 if st.button("Presente", key=f'{index}_presente' * 11):
-                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[1]], 'subject': [materias], 'class': [classes]})
-                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                    attendance = create_attendance(row, attendance, id, classes, materias, lista[1])
                     
             with column4:
                 if st.button("Presente", key=f'{index}_presente' * 13):
-                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[2]], 'subject': [materias], 'class': [classes]})
-                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                    attendance = create_attendance(row, attendance, id, classes, materias, lista[2])
 
             with column5:
                 if st.button("Presente", key=f'{index}_presente' * 17):
-                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[3]], 'subject': [materias], 'class': [classes]})
-                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                    attendance = create_attendance(row, attendance, id, classes, materias, lista[3])
 
             with column6:
                 if st.button("Presente", key=f'{index}_presente' * 23):
-                    row = pd.DataFrame({'student_id': [id],'attendance': [1],'date': [lista[4]], 'subject': [materias], 'class': [classes]})
-                    attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+                    attendance = create_attendance(row, attendance, id, classes, materias, lista[4])
 
             st.markdown('---')
     attendance.to_csv('./db/attendance.csv', index=False)
