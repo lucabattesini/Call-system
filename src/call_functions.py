@@ -17,24 +17,29 @@ def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today
                 st.markdown(f"### {first_name} {last_name}")
 
             with column2:
+                day = lista[0]
                 if st.button("Presente", key=f'{index}_presente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, lista[0])
+                    attendance = create_attendance(row, attendance, id, classes, materias, day)
                     
             with column3:
+                day = lista[1]
                 if st.button("Presente", key=f'{index}_presente' * 11):
-                    attendance = create_attendance(row, attendance, id, classes, materias, lista[1])
+                    attendance = create_attendance(row, attendance, id, classes, materias, day)
                     
             with column4:
+                day = lista[2]
                 if st.button("Presente", key=f'{index}_presente' * 13):
-                    attendance = create_attendance(row, attendance, id, classes, materias, lista[2])
+                    attendance = create_attendance(row, attendance, id, classes, materias, day)
 
             with column5:
+                day = lista[3]
                 if st.button("Presente", key=f'{index}_presente' * 17):
-                    attendance = create_attendance(row, attendance, id, classes, materias, lista[3])
+                    attendance = create_attendance(row, attendance, id, classes, materias, day)
 
             with column6:
+                day = lista[4]
                 if st.button("Presente", key=f'{index}_presente' * 23):
-                    attendance = create_attendance(row, attendance, id, classes, materias, lista[4])
+                    attendance = create_attendance(row, attendance, id, classes, materias, day)
 
             st.markdown('---')
     attendance.to_csv('./db/attendance.csv', index=False)
@@ -67,7 +72,7 @@ def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, tod
 # --- CREATE
 
 def create_attendance(row, attendance, student_id, class_id, subject_id, date):
-    row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date[0]], 'subject': [subject_id], 'class': [class_id]})
+    row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     # Verificar se essas informações existem se não retorna erro
     # Inserir uma linha com esses registros em attendance
