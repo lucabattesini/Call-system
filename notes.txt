@@ -1,1 +1,6 @@
 -Interview teachers about how to improve the program
+-Verify if the objects existe in functions
+-Use CRUD
+-Fix get_student_by_attendance function
+-Fix the 3 get_by function returning the row
+-Use python docstring in all the functions
