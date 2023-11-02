@@ -71,10 +71,21 @@ def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, tod
 # --- CREATE
 
 def create_attendance(row, attendance, student_id, class_id, subject_id, date):
+    """Eu gosto de pão
 
+    Parameters:
+    argument1 (int): Description of arg1
+
+    Returns:
+    int:Returning value
+
+   """
     row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     attendance.to_csv('./db/attendance.csv', index=False)
+    #if 'oi' == 'ola':
+        #raise 'erro: estudante não existe'
+
     # Verificar se essas informações existem se não retorna erro
     # Inserir uma linha com esses registros em attendance
     # retorna a attendance
@@ -134,6 +145,10 @@ def get_student_by_date(chosen_date):
 # * Precisa fazer com que attendance tenha um identificador único
 
 def update_attendance(id, new_call_value, subject=None):
+    """Atualizar a linha de um attendance que já existe
+
+    Função: sobrescrever e salvar
+    """
     # Verificar se essa attendance existe, se não retorna erro
     # Sobrescrever as informações com a informação nova
     # Verificar se subject é None, se sim, não sobrescrever informação
@@ -143,6 +158,12 @@ def update_attendance(id, new_call_value, subject=None):
 # --- DELETE
 
 def delete_attendace(id):
+    attendance_csv = pd.read_csv("./db/attendance.csv", encoding="UTF-8")
+    for row in attendance_csv.iterrows():
+        row_id = attendance_csv['student_id']
+        if id == row_id:
+            
+
     # Verificar se essa attendance existe, se não retorna erro
     # deletar a linha com o id
     # retornar a attendance deletada
