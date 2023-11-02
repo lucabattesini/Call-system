@@ -4,3 +4,5 @@
 -Fix get_student_by_attendance function
 -Fix the 3 get_by function returning the row
 -Use python docstring in all the functions
+-create a file called db connection that use function to conect the csvs and python files
+-create function for repeated things, like objects, vars, etc...
