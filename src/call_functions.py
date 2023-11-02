@@ -42,7 +42,6 @@ def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today
                     attendance = create_attendance(row, attendance, id, classes, materias, day)
 
             st.markdown('---')
-    attendance.to_csv('./db/attendance.csv', index=False)
 
 
 
@@ -72,8 +71,10 @@ def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, tod
 # --- CREATE
 
 def create_attendance(row, attendance, student_id, class_id, subject_id, date):
+
     row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
+    attendance.to_csv('./db/attendance.csv', index=False)
     # Verificar se essas informações existem se não retorna erro
     # Inserir uma linha com esses registros em attendance
     # retorna a attendance
@@ -82,10 +83,17 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date):
 # --- READ (get)
 
 def get_attendances_by_student(student_id, date=None):
+    student_csv = pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
+    student_list = []
+    for row in student_csv.iterrows():
+        first_name = student_csv['first_tname']
+        last_name = student_csv['last_tname']
+        name = first_name + last_name
+        student_list.append(name)
     # Verificar se essas informações existem se não retorna erro
     # Procurar no csv por attendences para esse student nessas datas
     # retorna a lista com o resultado
-    return []
+    return student_list
 
 # Criar outras funções para trazer a lista de várias attendances por:
     # Class -> get_attendances_by_class
