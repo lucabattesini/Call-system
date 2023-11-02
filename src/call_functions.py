@@ -95,7 +95,21 @@ def get_attendances_by_student(student_id, date=None):
     # retorna a lista com o resultado
     return student_list
 
-# Criar outras funções para trazer a lista de várias attendances por:
+def get_student_by_class(class_name):
+    student_csv = pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
+    student_list_by_class = []
+    for row in student_csv.iterrows():
+        student_year = student_csv['school_year']
+        student_classrom = student_csv['student_classroom']
+        student_class = student_year + student_classrom
+        first_name = student_csv['first_tname']
+        last_name = student_csv['last_tname']
+        name = first_name + last_name
+        if class_name == student_class:
+            student_list_by_class.append(name)
+
+def get
+    #Criar outras funções para trazer a lista de várias attendances por:
     # Class -> get_attendances_by_class
     # Subject -> get_attendances_by_subject
     # Date -> get_attendances_by_date
