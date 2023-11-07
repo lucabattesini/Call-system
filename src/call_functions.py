@@ -72,13 +72,10 @@ def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, tod
 # --- CREATE
 
 def create_attendance(row, attendance, student_id, class_id, subject_id, date):
-    """Eu gosto de pão
-
-    Parameters:
-    argument1 (int): Description of arg1
+    """Create a new line to attendance
 
     Returns:
-    int:Returning value
+    The new line of attendance
 
    """
     row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
