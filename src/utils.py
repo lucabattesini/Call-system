@@ -34,3 +34,7 @@ def dateweek(fdata) :
         name_in_portuguese = translated_names.get(name_of_day)
         week_days_name.append(name_in_portuguese)
     return formated_week_days
+
+def attendance() :
+    return pd.read_csv("./db/attendance.csv", encoding="UTF-8")
+
