@@ -114,18 +114,15 @@ def get_student_by_class(class_name):
         student_id = attendance_csv['student_id']
         student_class = attendance_csv['class']
         if class_name == student_class:
-            to_save = f'{student_id}: {student_class}'
-            student_list_by_class.append(to_save)
+            return row
 
 def get_student_by_subject(subject_name):
     attendance_csv = attendance()
     student_list_by_subject = []
     for row in attendance_csv.iterrows():
-        student_id = attendance_csv['student_id']
         student_subject = attendance_csv['subject']
         if subject_name == student_subject:
-            to_save = f'{student_id}: {student_subject}'
-            student_list_by_subject.append(to_save)
+            return row
 
 def get_student_by_date(chosen_date):
     attendance_csv = attendance()
@@ -134,8 +131,7 @@ def get_student_by_date(chosen_date):
         student_id = attendance_csv['student_id']
         date_saved = attendance_csv['date']
         if chosen_date == date_saved:
-            to_save = f'{student_id}: {date_saved}'
-            student_list_by_date.append(to_save)        
+            return row      
 #Criar outras funções para trazer a lista de várias attendances por:
     # Class -> get_attendances_by_class
     # Subject -> get_attendances_by_subject
@@ -145,7 +141,7 @@ def get_student_by_date(chosen_date):
 
 # * Precisa fazer com que attendance tenha um identificador único
 
-def update_attendance(id, new_call_value, subject=None):
+#def update_attendance(id, new_call_value, subject=None):
     """Atualizar a linha de um attendance que já existe
 
     Função: sobrescrever e salvar
@@ -154,17 +150,12 @@ def update_attendance(id, new_call_value, subject=None):
     # Sobrescrever as informações com a informação nova
     # Verificar se subject é None, se sim, não sobrescrever informação
     # retornar a attendance atualizada
-    return 
-
-# --- DELETE
-
 def delete_attendace(id):
+    x = 0
     attendance_csv = attendance() 
     for row in attendance_csv.iterrows():
         row_id = attendance_csv['student_id']
         if id == row_id:
-            
-    # Verificar se essa attendance existe, se não retorna erro
-    # deletar a linha com o id
-    # retornar a attendance deletada
-    return
+            attendance_csv.drop([x], axis=0, inplace=True)
+            return row
+        x = x + 1
