@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import datetime as datetime
+from utils import attendance
 
 def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today, lista, classes):
     for index, row in student_list.iterrows():
@@ -94,7 +95,7 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date):
 # --- READ (get)
 
 def get_attendances_by_student(student_id, date=None):
-    student_csv = pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
+    student_csv = attendance()
     student_list = []
     for row in student_csv.iterrows():
         first_name = student_csv['first_tname']
@@ -107,7 +108,7 @@ def get_attendances_by_student(student_id, date=None):
     return student_list
 
 def get_student_by_class(class_name):
-    attendance_csv = pd.read_csv("./db/attendance.csv", encoding="UTF-8")
+    attendance_csv = attendance()
     student_list_by_class = []
     for row in attendance_csv.iterrows():
         student_id = attendance_csv['student_id']
@@ -117,7 +118,7 @@ def get_student_by_class(class_name):
             student_list_by_class.append(to_save)
 
 def get_student_by_subject(subject_name):
-    attendance_csv = pd.read_csv("./db/attendance.csv", encoding="UTF-8")
+    attendance_csv = attendance()
     student_list_by_subject = []
     for row in attendance_csv.iterrows():
         student_id = attendance_csv['student_id']
@@ -127,7 +128,7 @@ def get_student_by_subject(subject_name):
             student_list_by_subject.append(to_save)
 
 def get_student_by_date(chosen_date):
-    attendance_csv = pd.read_csv("./db/attendance.csv", encoding="UTF-8")
+    attendance_csv = attendance()
     student_list_by_date = []
     for row in attendance_csv.iterrows():
         student_id = attendance_csv['student_id']
@@ -158,12 +159,11 @@ def update_attendance(id, new_call_value, subject=None):
 # --- DELETE
 
 def delete_attendace(id):
-    attendance_csv = pd.read_csv("./db/attendance.csv", encoding="UTF-8")
+    attendance_csv = attendance() 
     for row in attendance_csv.iterrows():
         row_id = attendance_csv['student_id']
         if id == row_id:
             
-
     # Verificar se essa attendance existe, se não retorna erro
     # deletar a linha com o id
     # retornar a attendance deletada
