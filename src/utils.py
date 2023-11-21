@@ -2,6 +2,9 @@ import pandas as pd
 import streamlit as st
 import datetime as datetime
 
+subjects_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
+classes_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
+
 def dateweek(fdata) :
     week_day = fdata.weekday()
     week_start = fdata - datetime.timedelta(days=week_day)

@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 from call_functions import pages_sidebar
-from utils import dateweek, get_attendance_df
+from utils import dateweek, get_attendance_df, classes_list, subjects_list
 
 st.set_page_config (layout="wide")
 
@@ -14,8 +14,7 @@ def select_class_subject() :
 
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
-    subject_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
-    serie_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
+
 
     date_week = dateweek(today)
 
@@ -24,9 +23,9 @@ def select_class_subject() :
     coluna, coluna1 = st.columns(2)
 
     with coluna:
-        subject = st.selectbox("Matéria", subject_list)
+        subject = st.selectbox("Matéria", subjects_list)
     with coluna1:
-        student_class = st.selectbox("Turma", serie_list)
+        student_class = st.selectbox("Turma", classes_list)
 
     col1, col2, col3, col4, col5, col6 = st.columns(6)
 
@@ -38,5 +37,5 @@ def select_class_subject() :
     col6.header(date_week[4])
     st.markdown('---')
 
-    pages_sidebar(attendance, student_list, ftoday, subject, subject_list, dateweek, today, date_week, student_class)
+    pages_sidebar(attendance, student_list, ftoday, subject, subjects_list, dateweek, today, date_week, student_class)
     dateweek(today)
