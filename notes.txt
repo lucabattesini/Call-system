@@ -1,4 +1,8 @@
 -Interview teachers about how to improve the program
+    Notes for the class
+    Create a button to show the week or the day in call list
+    Create a button for ‘todos presentes’
+    Eliminate the absent buttons and create a button to present and absent, like the play in youtube
 -Verify if the objects existe in functions
 -Use CRUD
 -Fix get_student_by_attendance function

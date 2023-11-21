@@ -2,12 +2,12 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 from call_functions import pages_sidebar
-from utils import dateweek, attendance_function
+from utils import dateweek, get_attendance_df
 
 st.set_page_config (layout="wide")
 
 def select_class_subject() :
-    attendance = attendance_function()
+    attendance = get_attendance_df()
     student_list = pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
     attendance.head()
     student_list.head()

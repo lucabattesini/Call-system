@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import datetime as datetime
-from utils import attendance_function
+from utils import get_attendance_df
 
 def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today, lista, classes):
     for index, row in student_list.iterrows():
@@ -92,7 +92,7 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date):
 # --- READ (get)
 
 def get_attendances_by_student(student_id, date=None):
-    student_csv = attendance_function()
+    student_csv = get_attendance_df()
     student_list = []
     for row in student_csv.iterrows():
         first_name = student_csv['first_tname']
@@ -104,8 +104,8 @@ def get_attendances_by_student(student_id, date=None):
     # retorna a lista com o resultado
     return student_list
 
-def get_student_by_class(class_name):
-    attendance_csv = attendance_function()
+def get_students_by_class(class_name):
+    attendance_csv = get_attendance_df()
     student_list_by_class = []
     for row in attendance_csv.iterrows():
         student_id = attendance_csv['student_id']
@@ -113,16 +113,16 @@ def get_student_by_class(class_name):
         if class_name == student_class:
             return row
 
-def get_student_by_subject(subject_name):
-    attendance_csv = attendance_function()
+def get_students_by_subject(subject_name):
+    attendance_csv = get_attendance_df()
     student_list_by_subject = []
     for row in attendance_csv.iterrows():
         student_subject = attendance_csv['subject']
         if subject_name == student_subject:
             return row
 
-def get_student_by_date(chosen_date):
-    attendance_csv = attendance_function()
+def get_students_by_date(chosen_date):
+    attendance_csv = get_attendance_df()
     student_list_by_date = []
     for row in attendance_csv.iterrows():
         student_id = attendance_csv['student_id']
@@ -148,11 +148,11 @@ def get_student_by_date(chosen_date):
     # Verificar se subject é None, se sim, não sobrescrever informação
     # retornar a attendance atualizada
 def delete_attendace(id):
-    x = 0
-    attendance_csv = attendance_function() 
+    counter = 0
+    attendance_csv = get_attendance_df() 
     for row in attendance_csv.iterrows():
         row_id = attendance_csv['student_id']
         if id == row_id:
-            attendance_csv.drop([x], axis=0, inplace=True)
+            attendance_csv.drop([counter], axis=0, inplace=True)
             return row
-        x = x + 1
+        counter += 1
