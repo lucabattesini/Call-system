@@ -2,19 +2,18 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 from call_functions import pages_sidebar
-from utils import dateweek, get_attendance_df, classes_list, subjects_list
+from utils import dateweek, get_attendance_df, get_students_df, classes_list, subjects_list
 
 st.set_page_config (layout="wide")
 
 def select_class_subject() :
     attendance = get_attendance_df()
-    student_list = pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
+    student_list = get_students_df()
     attendance.head()
     student_list.head()
 
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
-
 
     date_week = dateweek(today)
 
