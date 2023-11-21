@@ -22,3 +22,4 @@ def get_student(id):
     # procura o estudante com o id passado
     # preenche no dicionário student os campos certos
     return student
+
