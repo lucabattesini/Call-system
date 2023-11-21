@@ -35,6 +35,6 @@ def dateweek(fdata) :
         week_days_name.append(name_in_portuguese)
     return formated_week_days
 
-def attendance() :
+def attendance_function() :
     return pd.read_csv("./db/attendance.csv", encoding="UTF-8")
 
