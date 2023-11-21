@@ -5,7 +5,6 @@ import datetime as datetime
 def dateweek(fdata) :
     week_day = fdata.weekday()
     week_start = fdata - datetime.timedelta(days=week_day)
-    week_end = week_start + datetime.timedelta(days=4)
     temporary_list = [1, 2, 3, 4, 5]
     day = 0
     week_days = []
@@ -19,7 +18,7 @@ def dateweek(fdata) :
         "Friday": "Sexta-feira",
     }
 
-    for n in temporary_list:
+    for _ in temporary_list:
         delta = datetime.timedelta(days=day)
         new_date = week_start + delta
         week_days.append(new_date)

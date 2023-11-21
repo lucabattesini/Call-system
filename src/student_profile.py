@@ -8,7 +8,6 @@ def show_profile(first_name, last_name, student_class) :
         st.markdown(f'# {aluno}')
     with column:
         st.markdown(f'# {student_class}')
-    notes = st.text_input("Anotações")
 
 # --- READ (get)
 
