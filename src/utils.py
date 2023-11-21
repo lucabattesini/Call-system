@@ -1,5 +1,3 @@
-import pandas as pd
-import streamlit as st
 import datetime as datetime
 
 subjects_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
@@ -37,9 +35,5 @@ def dateweek(fdata) :
         week_days_name.append(name_in_portuguese)
     return formated_week_days
 
-def get_attendance_df() :
-    return pd.read_csv("./db/attendance.csv", encoding="UTF-8")
 
-def get_students_df() :
-    return pd.read_csv("./db/students_utf-8.csv", encoding="UTF-8")
 

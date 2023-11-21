@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import datetime as datetime
-from utils import get_attendance_df
+from db_connection import get_attendance_df
 
 def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today, lista, classes):
     for index, row in student_list.iterrows():

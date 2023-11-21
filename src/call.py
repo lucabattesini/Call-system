@@ -2,7 +2,8 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 from call_functions import pages_sidebar
-from utils import dateweek, get_attendance_df, get_students_df, classes_list, subjects_list
+from utils import dateweek, classes_list, subjects_list
+from db_connection import get_attendance_df, get_students_df
 
 st.set_page_config (layout="wide")
 
