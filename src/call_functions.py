@@ -94,7 +94,7 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date):
 def get_attendances_by_student(student_id, date=None):
     student_csv = get_attendance_df()
     student_list = []
-    for row in student_csv.iterrows():
+    for _ in student_csv.iterrows():
         first_name = student_csv['first_tname']
         last_name = student_csv['last_tname']
         name = first_name + last_name
@@ -111,7 +111,11 @@ def get_students_by_class(class_name):
         student_id = attendance_csv['student_id']
         student_class = attendance_csv['class']
         if class_name == student_class:
-            return row
+            student_list_by_class.append(student_id)
+    print(student_list_by_class)
+    return student_list_by_class
+
+get_students_by_class('2EMB')
 
 def get_students_by_subject(subject_name):
     attendance_csv = get_attendance_df()
@@ -137,7 +141,8 @@ def get_students_by_date(chosen_date):
 # --- UPDATE
 
 # * Precisa fazer com que attendance tenha um identificador único
-
+def attendance(id, new_call_value, subject=None) :
+    
 #def update_attendance(id, new_call_value, subject=None):
     """Atualizar a linha de um attendance que já existe
 
