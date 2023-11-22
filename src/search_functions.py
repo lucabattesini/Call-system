@@ -1,4 +1,3 @@
-import pandas as pd
 import streamlit as st
 from student_profile import show_profile
 
