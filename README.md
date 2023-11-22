@@ -43,7 +43,7 @@ The main objective of this site is make it easier the school attendance calls
 To run the program after the installation instructions and with the virtualenv activated, you just need to run:
 
 ```bash
-streamlit run main.py
+streamlit run src/main.py
 ```
 
 ## Possible errors
