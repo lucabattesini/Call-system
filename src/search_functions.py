@@ -13,9 +13,9 @@ def student_search(student_list, student_class, student) :
             if class_fullname == student_class:
                 if student == '':
                       if st.button(student_first_name, key=student_id):
-                            show_profile(student_first_name, student_last_name, student_id, class_fullname)
+                            show_profile(student_first_name, student_last_name, class_fullname)
                 
                 elif student_first_name.lower() == student:
                         if st.button(student_first_name, key=student_id):
                             st.markdown("Funcionou")
-                            show_profile(student_first_name, student_last_name, student_id, class_fullname)
+                            show_profile(student_first_name, student_last_name, class_fullname)

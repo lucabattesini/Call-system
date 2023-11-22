@@ -37,5 +37,5 @@ def select_class_subject() :
     col6.header(date_week[4])
     st.markdown('---')
 
-    pages_sidebar(attendance, student_list, ftoday, subject, subjects_list, dateweek, today, date_week, student_class)
     dateweek(today)
+    pages_sidebar(attendance, student_list, subject, date_week, student_class)

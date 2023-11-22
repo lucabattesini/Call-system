@@ -1,9 +1,10 @@
 import pandas as pd
 import streamlit as st
 import datetime as datetime
-from db.connection import get_attendance_df
+from utils import subjects_list
+from db.connection import get_attendance_df, save_attendance_df, save_students_summary_df
 
-def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today, lista, classes):
+def call_list_buttons(attendance, student_list, materias, lista, classes):
     for index, row in student_list.iterrows():
         id = row['student_id']
         first_name = row['first_name']
@@ -47,11 +48,11 @@ def call_list_buttons(attendance, student_list, fdata, materias, dateweek, today
 
 
 def call_list_sum(attendance, student_list):
-    for i, row in student_list.iterrows():
+    for _, row in student_list.iterrows():
         id = row['student_id']
         x = 0
 
-        for index, row2 in attendance.iterrows():
+        for _, row2 in attendance.iterrows():
             id2 = row2['student_id']
             value = row2['attendance']
             if id == id2:
@@ -59,12 +60,12 @@ def call_list_sum(attendance, student_list):
                   x = x + 1
 
         student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x
-    student_list.to_csv('./call_list_students_utf-8.csv', index=False)
+        save_students_summary_df(student_list)
 
-def pages_sidebar(attendance, student_list, fdata, side, materias, dateweek, today, lista, classes):
-    for subject in materias:
-        if side == subject:
-            call_list_buttons(attendance, student_list, fdata, subject, dateweek, today, lista, classes)
+def pages_sidebar(attendance, student_list, subject, lista, classes):
+    for sub in subjects_list:
+        if subject == sub:
+            call_list_buttons(attendance, student_list, sub, lista, classes)
             if st.button("Salvar", key='ola'):
                 call_list_sum(attendance, student_list)
                 
@@ -80,7 +81,7 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date):
    """
     row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
-    attendance.to_csv('./db/attendance.csv', index=False)
+    save_attendance_df(attendance)
     #if 'oi' == 'ola':
         #raise 'erro: estudante não existe'
 
@@ -107,12 +108,10 @@ def get_attendances_by_student(student_id, date=None):
 def get_students_by_class(class_name):
     attendance_csv = get_attendance_df()
     student_list_by_class = []
-    for row in attendance_csv.iterrows():
-        student_id = attendance_csv['student_id']
-        student_class = attendance_csv['class']
+    for _, row in attendance_csv.iterrows():
+        student_class = row['class']
         if class_name == student_class:
-            student_list_by_class.append(student_id)
-    print(student_list_by_class)
+            student_list_by_class.append(row)
     return student_list_by_class
 
 get_students_by_class('2EMB')
