@@ -1,2 +1,4 @@
 virtualenv
 venv
+__pycache__
+notes.txt

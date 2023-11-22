@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 from search import search_profile
 from call import select_class_subject
 from menu import menu

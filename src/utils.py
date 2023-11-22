@@ -1,11 +1,11 @@
-import pandas as pd
-import streamlit as st
 import datetime as datetime
+
+subjects_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
+classes_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
 
 def dateweek(fdata) :
     week_day = fdata.weekday()
     week_start = fdata - datetime.timedelta(days=week_day)
-    week_end = week_start + datetime.timedelta(days=4)
     temporary_list = [1, 2, 3, 4, 5]
     day = 0
     week_days = []
@@ -19,7 +19,7 @@ def dateweek(fdata) :
         "Friday": "Sexta-feira",
     }
 
-    for n in temporary_list:
+    for _ in temporary_list:
         delta = datetime.timedelta(days=day)
         new_date = week_start + delta
         week_days.append(new_date)
@@ -34,3 +34,6 @@ def dateweek(fdata) :
         name_in_portuguese = translated_names.get(name_of_day)
         week_days_name.append(name_in_portuguese)
     return formated_week_days
+
+
+
