@@ -3,7 +3,7 @@ import streamlit as st
 from datetime import datetime
 from call_functions import pages_sidebar
 from utils import dateweek, classes_list, subjects_list
-from db_connection import get_attendance_df, get_students_df
+from db.connection import get_attendance_df, get_students_df
 
 st.set_page_config (layout="wide")
 
