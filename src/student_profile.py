@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+from db_connection import get_students_df
+
+df = get_students_df()
 
 def show_profile(first_name, last_name, student_class) :
     column, column2 = st.columns(2)
@@ -17,7 +20,13 @@ def get_students(classId):
     return []
 
 def get_student(id):
-    student = { 'name': "", 'grade': 0, 'attendance': [], 'total_attendance_per_class': []}
+    for students in df.iterrows() :
+        student_first_name = students['first_name']
+        student_last_name = students['last_name']
+        student_name = student_first_name + ' ' + student_last_name
+        student_attendance = students['attendance_total']
+        student = { 'name': [student_name], 'grade': 0, 'attendance': [student_attendance], 'total_attendance_per_class': []}
+
     # procura o estudante com o id passado
     # preenche no dicionário student os campos certos
     return student
