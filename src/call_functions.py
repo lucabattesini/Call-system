@@ -21,27 +21,37 @@ def call_list_buttons(attendance, student_list, materias, lista, classes):
             with column2:
                 day = lista[0]
                 if st.button("Presente", key=f'{index}_presente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente'):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
                     
             with column3:
                 day = lista[1]
                 if st.button("Presente", key=f'{index}_presente' * 11):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 11):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
                     
             with column4:
                 day = lista[2]
                 if st.button("Presente", key=f'{index}_presente' * 13):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 13):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
 
             with column5:
                 day = lista[3]
                 if st.button("Presente", key=f'{index}_presente' * 17):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 17):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
 
             with column6:
                 day = lista[4]
                 if st.button("Presente", key=f'{index}_presente' * 23):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 23):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
 
             st.markdown('---')
 
@@ -54,12 +64,18 @@ def call_list_sum(attendance, student_list):
 
         for _, row2 in attendance.iterrows():
             id2 = row2['student_id']
-            value = row2['attendance']
+            value = row2['present']
             if id == id2:
                 if value == 1:
-                  x = x + 1
+                  x =+ 1
+        for _, row2 in attendance.iterrows():
+            id2 = row2['student_id']
+            value = row2['absent']
+            if id == id2:
+                if value == 1:
+                  y =+ 1
 
-        student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x
+        student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x - y
         save_students_summary_df(student_list)
 
 def pages_sidebar(attendance, student_list, subject, lista, classes):
@@ -72,14 +88,14 @@ def pages_sidebar(attendance, student_list, subject, lista, classes):
                 
 # --- CREATE
 
-def create_attendance(row, attendance, student_id, class_id, subject_id, date):
+def create_attendance(row, attendance, student_id, class_id, subject_id, date, present, absent):
     """Create a new line to attendance
 
     Returns:
     The new line of attendance
 
    """
-    row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
+    row = pd.DataFrame({'student_id': [student_id],'present': [present],'absent': [absent],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     save_attendance_df(attendance)
     #if 'oi' == 'ola':
