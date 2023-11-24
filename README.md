@@ -1,31 +1,51 @@
 # Call-system
-The main objective of this site is make easier the school attendance calls
 
-## Technologys used
+The main objective of this site is make it easier the school attendance calls
+
+## Technologies used
+
 - Python
 - Streamlit
 - Pandas
+
 ## Installing the requirements
-download and install python from this link
 
-    https://www.python.org/
+1. [Download and install python](https://www.python.org/)
 
-install the virtualenv with that code in terminal
+2. Install the virtual environment with that code in terminal
 
-    python3 -m venv virtualenv
+    ```bash python3 -m venv venv```
 
-Run the virtualenv with that code in terminal
+3. Run the virtual environment
 
-    venv/scripts/activate
+   ```bash
+   # Mac
+   source venv/bin/activate
 
-Install the requierements in your machine with this code(The venv need to be activated)
+   # Windows
+   venv/scripts/activate
+   ```
 
+4. Install the requierements for the project _(The venv need to be activated)_
+
+    ```bash
     pip install -r requirements.txt
+    ```
 
-## Runing the program
-To run that program with the installation instructions and with the virtualenv activated. You just need to run this code to open it in web.
+5. Deactivate the environment
 
-    streamlit run main.py
+    ```bash
+    deactivate
+    ```
+
+## Running the program
+
+To run the program after the installation instructions and with the virtualenv activated, you just need to run:
+
+```bash
+streamlit run src/main.py
+```
 
 ## Possible errors
 
+[WIP]
