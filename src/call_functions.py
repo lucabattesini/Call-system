@@ -108,20 +108,21 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date, p
 
 # --- READ (get)
 
-def get_attendances_by_student(student_id, date=None):
+def get_attendances_by_student(id, date=None):
     student_csv = get_attendance_df()
-    student_list = []
+    attenddance_list = []
     for _ in student_csv.iterrows():
-        first_name = student_csv['first_tname']
-        last_name = student_csv['last_tname']
-        name = first_name + last_name
-        student_list.append(name)
+        student_id = student_csv['student_id']
+        if student_id == id:
+            student_attendance = student_csv['attendance_total']
+            attenddance_list.append(student_attendance)
+    
     # Verificar se essas informações existem se não retorna erro
     # Procurar no csv por attendences para esse student nessas datas
     # retorna a lista com o resultado
-    return student_list
+    return attenddance_list
 
-def get_students_by_class(class_name):
+def get_students_by_class(class_name): 
     attendance_csv = get_attendance_df()
     student_list_by_class = []
     for _, row in attendance_csv.iterrows():
@@ -130,17 +131,16 @@ def get_students_by_class(class_name):
             student_list_by_class.append(row)
     return student_list_by_class
 
-get_students_by_class('2EMB')
-
-def get_students_by_subject(subject_name):
+def get_students_by_subject(subject_name): 
     attendance_csv = get_attendance_df()
     student_list_by_subject = []
-    for row in attendance_csv.iterrows():
+    for _, row in attendance_csv.iterrows():
         student_subject = attendance_csv['subject']
         if subject_name == student_subject:
-            return row
+            student_list_by_subject.append(row)
+    return student_list_by_subject
 
-def get_students_by_date(chosen_date):
+def get_students_by_date(chosen_date): #x
     attendance_csv = get_attendance_df()
     student_list_by_date = []
     for row in attendance_csv.iterrows():
@@ -155,9 +155,15 @@ def get_students_by_date(chosen_date):
     
 # --- UPDATE
 
-# * Precisa fazer com que attendance tenha um identificador único
-def attendance(id, new_call_value, subject=None) :
-    
+# * Precisa fazer com que attendance tenha um identificador único 
+def attendance(student_list, id, new_call_value, subject=None) : 
+    for _ in student_list.iterrows:
+        student_id = student_list['student_id']
+        if student_id == id:
+            new_line = {'attendance_total': new_call_value, }
+            student_list.loc[id] = new_line
+            student_list.to_csv('')
+
 #def update_attendance(id, new_call_value, subject=None):
     """Atualizar a linha de um attendance que já existe
 
