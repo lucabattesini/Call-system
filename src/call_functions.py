@@ -21,27 +21,37 @@ def call_list_buttons(attendance, student_list, materias, lista, classes):
             with column2:
                 day = lista[0]
                 if st.button("Presente", key=f'{index}_presente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente'):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
                     
             with column3:
                 day = lista[1]
                 if st.button("Presente", key=f'{index}_presente' * 11):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 11):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
                     
             with column4:
                 day = lista[2]
                 if st.button("Presente", key=f'{index}_presente' * 13):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 13):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
 
             with column5:
                 day = lista[3]
                 if st.button("Presente", key=f'{index}_presente' * 17):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 17):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
 
             with column6:
                 day = lista[4]
                 if st.button("Presente", key=f'{index}_presente' * 23):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
+                elif st.button("Ausent", key=f'{index}_ausente' * 23):
+                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
 
             st.markdown('---')
 
@@ -54,12 +64,18 @@ def call_list_sum(attendance, student_list):
 
         for _, row2 in attendance.iterrows():
             id2 = row2['student_id']
-            value = row2['attendance']
+            value = row2['present']
             if id == id2:
                 if value == 1:
-                  x = x + 1
+                  x =+ 1
+        for _, row2 in attendance.iterrows():
+            id2 = row2['student_id']
+            value = row2['absent']
+            if id == id2:
+                if value == 1:
+                  y =+ 1
 
-        student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x
+        student_list.loc[student_list['student_id'] == id, 'attendance_total'] = x - y
         save_students_summary_df(student_list)
 
 def pages_sidebar(attendance, student_list, subject, lista, classes):
@@ -72,14 +88,14 @@ def pages_sidebar(attendance, student_list, subject, lista, classes):
                 
 # --- CREATE
 
-def create_attendance(row, attendance, student_id, class_id, subject_id, date):
+def create_attendance(row, attendance, student_id, class_id, subject_id, date, present, absent):
     """Create a new line to attendance
 
     Returns:
     The new line of attendance
 
    """
-    row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
+    row = pd.DataFrame({'student_id': [student_id],'present': [present],'absent': [absent],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     save_attendance_df(attendance)
     #if 'oi' == 'ola':
@@ -92,20 +108,21 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date):
 
 # --- READ (get)
 
-def get_attendances_by_student(student_id, date=None):
+def get_attendances_by_student(id, date=None):
     student_csv = get_attendance_df()
-    student_list = []
+    attenddance_list = []
     for _ in student_csv.iterrows():
-        first_name = student_csv['first_tname']
-        last_name = student_csv['last_tname']
-        name = first_name + last_name
-        student_list.append(name)
+        student_id = student_csv['student_id']
+        if student_id == id:
+            student_attendance = student_csv['attendance_total']
+            attenddance_list.append(student_attendance)
+    
     # Verificar se essas informações existem se não retorna erro
     # Procurar no csv por attendences para esse student nessas datas
     # retorna a lista com o resultado
-    return student_list
+    return attenddance_list
 
-def get_students_by_class(class_name):
+def get_students_by_class(class_name): 
     attendance_csv = get_attendance_df()
     student_list_by_class = []
     for _, row in attendance_csv.iterrows():
@@ -114,24 +131,23 @@ def get_students_by_class(class_name):
             student_list_by_class.append(row)
     return student_list_by_class
 
-get_students_by_class('2EMB')
-
-def get_students_by_subject(subject_name):
+def get_students_by_subject(subject_name): 
     attendance_csv = get_attendance_df()
     student_list_by_subject = []
-    for row in attendance_csv.iterrows():
+    for _, row in attendance_csv.iterrows():
         student_subject = attendance_csv['subject']
         if subject_name == student_subject:
-            return row
+            student_list_by_subject.append(row)
+    return student_list_by_subject
 
-def get_students_by_date(chosen_date):
+def get_students_by_date(chosen_date): #x
     attendance_csv = get_attendance_df()
     student_list_by_date = []
     for row in attendance_csv.iterrows():
-        student_id = attendance_csv['student_id']
         date_saved = attendance_csv['date']
         if chosen_date == date_saved:
-            return row      
+            student_list_by_date.append(row)
+    return row      
 #Criar outras funções para trazer a lista de várias attendances por:
     # Class -> get_attendances_by_class
     # Subject -> get_attendances_by_subject
@@ -139,9 +155,15 @@ def get_students_by_date(chosen_date):
     
 # --- UPDATE
 
-# * Precisa fazer com que attendance tenha um identificador único
-def attendance(id, new_call_value, subject=None) :
-    
+# * Precisa fazer com que attendance tenha um identificador único 
+def attendance(student_list, id, new_call_value, subject=None) : 
+    for _ in student_list.iterrows:
+        student_id = student_list['student_id']
+        if student_id == id:
+            new_line = {'attendance_total': new_call_value, }
+            student_list.loc[id] = new_line
+            student_list.to_csv('')
+
 #def update_attendance(id, new_call_value, subject=None):
     """Atualizar a linha de um attendance que já existe
 
