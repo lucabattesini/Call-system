@@ -119,12 +119,29 @@ def get_students_by_date(chosen_date):
     attendance_csv = get_attendance_df()
     student_list_by_date = []
     for row in attendance_csv.iterrows():
-        student_id = attendance_csv['student_id']
         date_saved = attendance_csv['date']
         if chosen_date == date_saved:
             student_list_by_date.append(row)
     return student_list_by_date
-  
+
+def get_students_by_subject(chosen_subject): 
+    attendance_csv = get_attendance_df()
+    student_list_by_subject = []
+    for row in attendance_csv.iterrows():
+        subject = attendance_csv['subject']
+        if chosen_subject == subject:
+            student_list_by_subject.append(row)
+    return student_list_by_subject
+
+def get_students_by_class(chosen_class): 
+    attendance_csv = get_attendance_df()
+    student_list_by_class = []
+    for row in attendance_csv.iterrows():
+        student_class = attendance_csv['class']
+        if chosen_class == student_class:
+            student_list_by_class.append(row)
+    return student_list_by_class
+
 #Criar outras funções para trazer a lista de várias attendances por:
     # Class -> get_attendances_by_class
     # Subject -> get_attendances_by_subject
