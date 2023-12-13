@@ -81,12 +81,7 @@ def create_attendance(row, attendance, student_id, class_id, subject_id, date):
     row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     save_attendance_df(attendance)
-    #if 'oi' == 'ola':
-        #raise 'erro: estudante não existe'
 
-    # Verificar se essas informações existem se não retorna erro
-    # Inserir uma linha com esses registros em attendance
-    # retorna a attendance
     return attendance
 
 # --- READ (get)
@@ -99,9 +94,7 @@ def get_attendances_by_student(student_id, date=None):
         last_name = student_csv['last_tname']
         name = first_name + last_name
         student_list.append(name)
-    # Verificar se essas informações existem se não retorna erro
-    # Procurar no csv por attendences para esse student nessas datas
-    # retorna a lista com o resultado
+
     return student_list
 
 def get_students_by_class(class_name):
@@ -113,24 +106,25 @@ def get_students_by_class(class_name):
             student_list_by_class.append(row)
     return student_list_by_class
 
-get_students_by_class('2EMB')
-
-def get_students_by_subject(subject_name):
+def get_students_by_subject(subject_name): 
     attendance_csv = get_attendance_df()
     student_list_by_subject = []
     for row in attendance_csv.iterrows():
         student_subject = attendance_csv['subject']
         if subject_name == student_subject:
-            return row
+            student_list_by_subject.append(row)
+    return student_list_by_subject
 
-def get_students_by_date(chosen_date):
+def get_students_by_date(chosen_date): 
     attendance_csv = get_attendance_df()
     student_list_by_date = []
     for row in attendance_csv.iterrows():
         student_id = attendance_csv['student_id']
         date_saved = attendance_csv['date']
         if chosen_date == date_saved:
-            return row      
+            student_list_by_date.append(row)
+    return student_list_by_date
+  
 #Criar outras funções para trazer a lista de várias attendances por:
     # Class -> get_attendances_by_class
     # Subject -> get_attendances_by_subject
@@ -139,7 +133,8 @@ def get_students_by_date(chosen_date):
 # --- UPDATE
 
 # * Precisa fazer com que attendance tenha um identificador único
-def attendance(id, new_call_value, subject=None) :
+
+#def attendance(id, new_call_value, subject=None) :
     
 #def update_attendance(id, new_call_value, subject=None):
     """Atualizar a linha de um attendance que já existe
@@ -159,3 +154,5 @@ def delete_attendace(id):
             attendance_csv.drop([counter], axis=0, inplace=True)
             return row
         counter += 1
+
+#Refazer a função com base no id por linha do attendance.csv
