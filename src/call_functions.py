@@ -71,7 +71,6 @@ def pages_sidebar(attendance, student_list, subject, lista, classes):
                 
                 
 # --- CREATE
-
 def create_attendance(row, attendance, student_id, class_id, subject_id, date):
     """Create a new line to attendance
 
