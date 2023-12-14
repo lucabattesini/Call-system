@@ -3,7 +3,7 @@ from db.connection import get_students_df, get_attendance_df
 
 def get_student_presence_sum(id) :
     df = get_students_df()
-    for i, row in df.iterrows():
+    for _, row in df.iterrows():
         student_id = row['student_id']
         attendance_total = row['attendance_total']
         if student_id == id:
@@ -12,12 +12,12 @@ def get_student_presence_sum(id) :
 def get_student_absence_sum(id) :
     df = get_attendance_df()
     ct = 0
-    for i, row in df.iterrows():
+    for _, row in df.iterrows():
         student_id = row['student_id']
         attendance = row['attendance']
         if student_id == id:
             if attendance == 0:
-                ct =+ 1
+                ct += 1
     return ct
 
 def get_student_presence_and_absence(id) :
