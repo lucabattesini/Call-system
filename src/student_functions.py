@@ -65,3 +65,16 @@ def create_student_note(note, subject, id) :
     new_line = pd.DataFrame({'student_id': [id], 'notes': [note], 'subject': [subject], 'date': [ftoday]})
     df = pd.concat([df, new_line], axis=0, ignore_index=True)
     save_notes_df(df)
+
+def get_student_notes(id) :
+    df = get_notes_df()
+    student_notes_list = []
+    for _, row in df.iterrows():
+        student_id = row['student_id']
+        if student_id == id:
+            student_notes = row['notes']
+            student_notes_subject = row['subject']
+            student_notes_date = row['date']
+            data = str(f"Anotação: {student_notes} \n Matéria: {student_notes_subject} \n Data: {student_notes_date}")
+            student_notes_list.append(data)
+    return student_notes_list
