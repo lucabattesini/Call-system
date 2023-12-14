@@ -31,11 +31,11 @@ def get_student_presence_and_absence(id) :
 def get_presence_by_subject(subject, id) :
     df = get_attendance_df()
     student_presence = []
-    for _ in df.iterrows():
-        student_id = df['student_id']
-        presence_subject = df['subject']
-        date = df['date']
-        attendance = df['attendance']
+    for i, row in df.iterrows():
+        student_id = row['student_id']
+        presence_subject = row['subject']
+        date = row['date']
+        attendance = row['attendance']
         if student_id == id:
             if presence_subject == subject:
                 if attendance == 1:
