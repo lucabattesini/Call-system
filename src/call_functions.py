@@ -37,6 +37,7 @@ def call_list_buttons(attendance, student_list, materias, lista, classes):
                 day = lista[3]
                 if st.button("Presente", key=f'{index}_presente' * 17):
                     attendance = create_attendance(row, attendance, id, classes, materias, day)
+                
 
             with column6:
                 day = lista[4]
