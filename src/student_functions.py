@@ -1,6 +1,6 @@
 import pandas as pd 
 from datetime import datetime
-from db.connection import get_attendance_df, save_notes_df
+from db.connection import get_attendance_df, save_notes_df, get_notes_df
 from utils import dateweek
 
 def get_student_presence_sum(id) :
@@ -58,8 +58,9 @@ def get_presence_by_subject(subject, id) :
     return student_presence
 
 def create_student_note(note, subject, id) :
+    df = get_notes_df()
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
     new_line = pd.Series({'student_id': id, 'notes': note, 'subject': subject, 'date': ftoday})
-    df = pd.concat(new_line, axis=0, ignore_index=True)
+    df = df.append(new_line, axis=0, ignore_index=True)
     save_notes_df(df)
