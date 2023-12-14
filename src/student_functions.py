@@ -3,9 +3,9 @@ from db.connection import get_students_df, get_attendance_df
 
 def get_student_presence_sum(id) :
     df = get_students_df()
-    for _ in df.iterrows():
-        student_id = df['student_id']
-        attendance_total = df['attendance_total']
+    for i, row in df.iterrows():
+        student_id = row['student_id']
+        attendance_total = row['attendance_total']
         if student_id == id:
             return attendance_total
 
