@@ -15,14 +15,13 @@ def get_student_absence_sum(id) :
     for _, row in df.iterrows():
         student_id = row['student_id']
         attendance = row['attendance']
-        if student_id == id:
-            if attendance == 0:
-                ct += 1
+        if student_id == id and attendance == 0:
+            ct += 1
     return ct
 
 def get_student_presence_and_absence(id) :
     presences = get_student_presence_sum(id)
-    absences = get_student_absence_sum
+    absences = get_student_absence_sum(id)
     all_classes = presences + absences
     presences_first_part_formula = presences * 100
     presences_percentage = presences_first_part_formula / all_classes
@@ -31,7 +30,7 @@ def get_student_presence_and_absence(id) :
 def get_presence_by_subject(subject, id) :
     df = get_attendance_df()
     student_presence = []
-    for i, row in df.iterrows():
+    for _, row in df.iterrows():
         student_id = row['student_id']
         presence_subject = row['subject']
         date = row['date']
