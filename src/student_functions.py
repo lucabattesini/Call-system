@@ -75,6 +75,6 @@ def get_student_notes(id) :
             student_notes = row['notes']
             student_notes_subject = row['subject']
             student_notes_date = row['date']
-            data = str(f"Anotação: {student_notes} \n Matéria: {student_notes_subject} \n Data: {student_notes_date}")
+            data = f"Anotação: {student_notes} \n Matéria: {student_notes_subject} \n Data: {student_notes_date}"
             student_notes_list.append(data)
     return student_notes_list
