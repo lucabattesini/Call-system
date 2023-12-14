@@ -4,12 +4,14 @@ from db.connection import get_students_df, get_attendance_df
 from utils import dateweek
 
 def get_student_presence_sum(id) :
-    df = get_students_df()
+    df = get_attendance_df()
+    ct = 0
     for _, row in df.iterrows():
         student_id = row['student_id']
-        attendance_total = row['attendance_total']
-        if student_id == id:
-            return attendance_total
+        attendance = row['attendance']
+        if student_id == id and attendance == 1:
+            ct += 1
+    return ct
 
 def get_student_absence_sum(id) :
     df = get_attendance_df()
