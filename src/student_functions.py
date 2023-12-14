@@ -59,8 +59,9 @@ def get_presence_by_subject(subject, id) :
 
 def create_student_note(note, subject, id) :
     df = get_notes_df()
+    df.head()
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
-    new_line = pd.Series({'student_id': id, 'notes': note, 'subject': subject, 'date': ftoday})
-    df = df.append(new_line, axis=0, ignore_index=True)
+    new_line = pd.DataFrame({'student_id': [id], 'notes': [note], 'subject': [subject], 'date': [ftoday]})
+    df = pd.concat([df, new_line], axis=0, ignore_index=True)
     save_notes_df(df)
