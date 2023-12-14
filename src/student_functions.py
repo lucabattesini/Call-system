@@ -12,9 +12,9 @@ def get_student_presence_sum(id) :
 def get_student_absence_sum(id) :
     df = get_attendance_df()
     ct = 0
-    for _ in df.iterrows():
-        student_id = df['student_id']
-        attendance = df['attendance']
+    for i, row in df.iterrows():
+        student_id = row['student_id']
+        attendance = row['attendance']
         if student_id == id:
             if attendance == 0:
                 ct =+ 1
