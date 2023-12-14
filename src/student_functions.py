@@ -1,5 +1,7 @@
 import pandas as pd 
+from datetime import datetime
 from db.connection import get_students_df, get_attendance_df
+from utils import dateweek
 
 def get_student_presence_sum(id) :
     df = get_students_df()
@@ -26,6 +28,14 @@ def get_student_presence_and_absence(id) :
     presences_first_part_formula = presences * 100
     presences_percentage = presences_first_part_formula / all_classes
     return all_classes, presences_percentage
+
+#def get_student_presence_and_absence_by_week(id) :
+    ct = 0
+    df = get_attendance_df()
+    presences = get_student_presence_sum(id)
+    absences = get_student_absence_sum(id)
+    today = datetime.now()
+    week = dateweek(today)
 
 def get_presence_by_subject(subject, id) :
     df = get_attendance_df()
