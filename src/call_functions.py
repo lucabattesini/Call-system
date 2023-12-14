@@ -13,7 +13,7 @@ def call_list_buttons(attendance, student_list, materias, lista, classes):
         serie_tipo = row['classroom']
         real_serie = serie + serie_tipo
 
-        column1, column2, column3, column4, column5, column6 = st.columns(6)
+        column1, column2 = st.columns(2)
         if real_serie == classes:
             with column1:
                 st.markdown(f"### {first_name} {last_name}")
@@ -21,27 +21,6 @@ def call_list_buttons(attendance, student_list, materias, lista, classes):
             with column2:
                 day = lista[0]
                 if st.button("Presente", key=f'{index}_presente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
-                    
-            with column3:
-                day = lista[1]
-                if st.button("Presente", key=f'{index}_presente' * 11):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
-                    
-            with column4:
-                day = lista[2]
-                if st.button("Presente", key=f'{index}_presente' * 13):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
-
-            with column5:
-                day = lista[3]
-                if st.button("Presente", key=f'{index}_presente' * 17):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
-                
-
-            with column6:
-                day = lista[4]
-                if st.button("Presente", key=f'{index}_presente' * 23):
                     attendance = create_attendance(row, attendance, id, classes, materias, day)
 
             st.markdown('---')
