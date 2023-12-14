@@ -4,7 +4,7 @@ import datetime as datetime
 from utils import subjects_list
 from db.connection import get_attendance_df, save_attendance_df, save_students_summary_df
 
-def call_list_buttons(attendance, student_list, materias, lista, classes):
+def call_list_buttons(attendance, student_list, materias, today, classes):
     for index, row in student_list.iterrows():
         id = row['student_id']
         first_name = row['first_name']
@@ -19,9 +19,11 @@ def call_list_buttons(attendance, student_list, materias, lista, classes):
                 st.markdown(f"### {first_name} {last_name}")
 
             with column2:
-                day = lista[0]
                 if st.button("Presente", key=f'{index}_presente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day)
+                    attendance = create_attendance(row, 1, attendance, id, classes, materias, today)
+                
+                if st.button("Ausente", key=f'{index}_ausente'):
+                    attendance = create_attendance(row, 0, attendance, id, classes, materias, today)
 
             st.markdown('---')
 
@@ -51,14 +53,14 @@ def pages_sidebar(attendance, student_list, subject, lista, classes):
                 
                 
 # --- CREATE
-def create_attendance(row, attendance, student_id, class_id, subject_id, date):
+def create_attendance(row, presence, attendance, student_id, class_id, subject_id, date):
     """Create a new line to attendance
 
     Returns:
     The new line of attendance
 
    """
-    row = pd.DataFrame({'student_id': [student_id],'attendance': [1],'date': [date], 'subject': [subject_id], 'class': [class_id]})
+    row = pd.DataFrame({'student_id': [student_id],'attendance': [presence],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     save_attendance_df(attendance)
 

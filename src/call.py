@@ -34,4 +34,4 @@ def select_class_subject() :
     st.markdown('---')
 
     dateweek(today)
-    pages_sidebar(attendance, student_list, subject, date_week, student_class)
+    pages_sidebar(attendance, student_list, subject, ftoday, student_class)
