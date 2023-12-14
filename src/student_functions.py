@@ -1,6 +1,6 @@
 import pandas as pd 
 from datetime import datetime
-from db.connection import get_students_df, get_attendance_df
+from db.connection import get_attendance_df
 from utils import dateweek
 
 def get_student_presence_sum(id) :
