@@ -1,8 +1,10 @@
 import streamlit as st
 from student_profile import show_profile
+from db.connection import get_students_df
 
-def student_search(student_list, id) :
-    for _, row in student_list.iterrows():
+def student_search(id) :
+    df  = get_students_df()
+    for _, row in df.iterrows():
             student_id = row['student_id']
             student_first_name = row['first_name']
             student_last_name = row['last_name']
