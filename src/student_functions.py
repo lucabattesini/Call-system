@@ -3,7 +3,7 @@ from datetime import datetime
 from db.connection import get_attendance_df, save_notes_df, get_notes_df
 from utils import dateweek
 
-def get_student_presence_sum(id) :
+def get_student_presence_sum(id) :                                                            
     df = get_attendance_df()
     ct = 0
     for _, row in df.iterrows():
