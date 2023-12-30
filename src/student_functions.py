@@ -102,13 +102,15 @@ def create_student_note(note, subject, id) :
 
 def get_student_notes(id) :
     df = get_notes_df()
-    student_notes_list = []
+    column, column2 = st.columns(2)
     for _, row in df.iterrows():
         student_id = row['student_id']
         if student_id == id:
             student_notes = row['notes']
             student_notes_subject = row['subject']
             student_notes_date = row['date']
-            data = f"Anotação: {student_notes} \n Matéria: {student_notes_subject} \n Data: {student_notes_date}"
-            student_notes_list.append(data)
-    return student_notes_list
+            with column:
+                st.markdown(f"### {student_notes_subject}")
+            with column2:
+                st.markdown(f"### {student_notes_date}")
+            st.markdown(f"{student_notes}")
