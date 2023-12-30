@@ -16,4 +16,4 @@ def student_search(name) :
         input_student_name_lower = name.lower()
         if student_name_lower == input_student_name_lower:
                     if st.button(f"### {student_name}  -  {class_full_name}"):
-                        show_profile(student_first_name, student_last_name, class_full_name)
+                        show_profile(student_name, class_full_name)
