@@ -1,6 +1,7 @@
 import streamlit as st
 from student_profile import show_profile
 from db.connection import get_students_df
+from student_functions import get_presence_by_subject
 
 def student_search(name) :
     df  = get_students_df()
@@ -17,3 +18,4 @@ def student_search(name) :
         if student_name_lower == input_student_name_lower:
                     if st.button(f"### {student_name}  -  {class_full_name}"):
                         show_profile(student_name, class_full_name)
+                        get_presence_by_subject(student_id)
