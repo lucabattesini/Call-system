@@ -19,4 +19,5 @@ def student_search(name) :
                     if st.button(f"### {student_name}  -  {class_full_name}"):
                         show_profile(student_name, class_full_name)
                         get_presence_by_subject(student_id)
+                        st.markdown("""---""")
                         get_student_notes(student_id)
