@@ -72,6 +72,7 @@ def get_presence_by_subject(id) :
     df = get_attendance_df()
     subject = st.selectbox("Matéria", subjects_list)
     column, column2 = st.columns(2)
+    ct = 0
     for _, row in df.iterrows():
         student_id = row['student_id']
         presence_subject = row['subject']
@@ -79,17 +80,19 @@ def get_presence_by_subject(id) :
         attendance = row['attendance']
         if student_id == id:
             if presence_subject == subject:
-                if attendance == 1:
-                    with column:
-                        st.markdown(f" Presente")
-                    with column2:
-                        st.markdown(f" Data: {date}")
+                ct += 1
+                if ct <= 10:
+                    if attendance == 1:
+                        with column:
+                            st.markdown(f" Presente")
+                        with column2:
+                            st.markdown(f" Data: {date}")
 
-                elif attendance == 0:
-                    with column:
-                        st.markdown(f" Ausente")
-                    with column2:
-                        st.markdown(f" Data: {date}")
+                    elif attendance == 0:
+                        with column:
+                            st.markdown(f" Ausente")
+                        with column2:
+                            st.markdown(f" Data: {date}")
 
 def create_student_note(note, subject, id) :
     df = get_notes_df()
