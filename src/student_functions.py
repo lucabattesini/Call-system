@@ -81,15 +81,15 @@ def get_presence_by_subject(id) :
             if presence_subject == subject:
                 if attendance == 1:
                     with column:
-                        st.markdown(f"### Presente")
+                        st.markdown(f" Presente")
                     with column2:
-                        st.markdown(f"### Data: {date}")
+                        st.markdown(f" Data: {date}")
 
                 elif attendance == 0:
                     with column:
-                        st.markdown(f"### Ausente")
+                        st.markdown(f" Ausente")
                     with column2:
-                        st.markdown(f"### Data: {date}")
+                        st.markdown(f" Data: {date}")
 
 def create_student_note(note, subject, id) :
     df = get_notes_df()
@@ -110,7 +110,7 @@ def get_student_notes(id) :
             student_notes_subject = row['subject']
             student_notes_date = row['date']
             with column:
-                st.markdown(f"### {student_notes_subject}")
+                st.markdown(f" {student_notes_subject}")
             with column2:
-                st.markdown(f"### {student_notes_date}")
+                st.markdown(f" {student_notes_date}")
             st.markdown(f"{student_notes}")
