@@ -27,15 +27,11 @@ def select_class_subject() :
     with coluna1:
         student_class = st.selectbox("Turma", classes_list)
 
-    col1, col2, col3, col4, col5, col6 = st.columns(6)
+    col1, col2 = st.columns(2)
 
     col1.header('Alunos')
-    col2.header(date_week[0])
-    col3.header(date_week[1])
-    col4.header(date_week[2])
-    col5.header(date_week[3])
-    col6.header(date_week[4])
+    col2.header(ftoday)
     st.markdown('---')
 
     dateweek(today)
-    pages_sidebar(attendance, student_list, subject, date_week, student_class)
+    pages_sidebar(attendance, student_list, subject, ftoday, student_class)

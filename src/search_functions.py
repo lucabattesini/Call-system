@@ -1,20 +1,23 @@
 import streamlit as st
 from student_profile import show_profile
+from db.connection import get_students_df
+from student_functions import get_presence_by_subject, get_student_notes
 
-def student_search(student_list, student_class, student) :
-    for _, row in student_list.iterrows():
-            student_id = row['student_id']
-            class_number = row['school_year']
-            class_letter = row['classroom']
-            class_fullname = class_number + class_letter
-            student_first_name = row['first_name']
-            student_last_name = row['last_name']
-            if class_fullname == student_class:
-                if student == '':
-                      if st.button(student_first_name, key=student_id):
-                            show_profile(student_first_name, student_last_name, class_fullname)
-                
-                elif student_first_name.lower() == student:
-                        if st.button(student_first_name, key=student_id):
-                            st.markdown("Funcionou")
-                            show_profile(student_first_name, student_last_name, class_fullname)
+def student_search(name) :
+    df  = get_students_df()
+    for _, row in df.iterrows():
+        student_id = row['student_id']
+        student_first_name = row['first_name']
+        student_last_name = row['last_name']
+        student_name = student_first_name + " " + student_last_name
+        year_class = row['school_year']
+        class_name = row['classroom']
+        class_full_name = year_class + class_name
+        student_name_lower = student_name.lower()
+        input_student_name_lower = name.lower()
+        if student_name_lower == input_student_name_lower:
+                    if st.button(f"### {student_name}  -  {class_full_name}"):
+                        show_profile(student_name, class_full_name)
+                        get_presence_by_subject(student_id)
+                        st.markdown("""---""")
+                        get_student_notes(student_id)

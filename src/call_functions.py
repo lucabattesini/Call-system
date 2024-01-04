@@ -4,7 +4,7 @@ import datetime as datetime
 from utils import subjects_list
 from db.connection import get_attendance_df, save_attendance_df, save_students_summary_df
 
-def call_list_buttons(attendance, student_list, materias, lista, classes):
+def call_list_buttons(attendance, student_list, materias, today, classes):
     for index, row in student_list.iterrows():
         id = row['student_id']
         first_name = row['first_name']
@@ -13,45 +13,17 @@ def call_list_buttons(attendance, student_list, materias, lista, classes):
         serie_tipo = row['classroom']
         real_serie = serie + serie_tipo
 
-        column1, column2, column3, column4, column5, column6 = st.columns(6)
+        column1, column2 = st.columns(2)
         if real_serie == classes:
             with column1:
                 st.markdown(f"### {first_name} {last_name}")
 
             with column2:
-                day = lista[0]
                 if st.button("Presente", key=f'{index}_presente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
-                elif st.button("Ausent", key=f'{index}_ausente'):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
-                    
-            with column3:
-                day = lista[1]
-                if st.button("Presente", key=f'{index}_presente' * 11):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
-                elif st.button("Ausent", key=f'{index}_ausente' * 11):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
-                    
-            with column4:
-                day = lista[2]
-                if st.button("Presente", key=f'{index}_presente' * 13):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
-                elif st.button("Ausent", key=f'{index}_ausente' * 13):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
-
-            with column5:
-                day = lista[3]
-                if st.button("Presente", key=f'{index}_presente' * 17):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
-                elif st.button("Ausent", key=f'{index}_ausente' * 17):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
-
-            with column6:
-                day = lista[4]
-                if st.button("Presente", key=f'{index}_presente' * 23):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 1, 0)
-                elif st.button("Ausent", key=f'{index}_ausente' * 23):
-                    attendance = create_attendance(row, attendance, id, classes, materias, day, 0, 1)
+                    attendance = create_attendance(row, 1, attendance, id, classes, materias, today)
+                
+                if st.button("Ausente", key=f'{index}_ausente'):
+                    attendance = create_attendance(row, 0, attendance, id, classes, materias, today)
 
             st.markdown('---')
 
@@ -87,28 +59,22 @@ def pages_sidebar(attendance, student_list, subject, lista, classes):
                 
                 
 # --- CREATE
-
-def create_attendance(row, attendance, student_id, class_id, subject_id, date, present, absent):
+def create_attendance(row, presence, attendance, student_id, class_id, subject_id, date):
     """Create a new line to attendance
 
     Returns:
     The new line of attendance
 
    """
-    row = pd.DataFrame({'student_id': [student_id],'present': [present],'absent': [absent],'date': [date], 'subject': [subject_id], 'class': [class_id]})
+    row = pd.DataFrame({'student_id': [student_id],'attendance': [presence],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     save_attendance_df(attendance)
-    #if 'oi' == 'ola':
-        #raise 'erro: estudante não existe'
 
-    # Verificar se essas informações existem se não retorna erro
-    # Inserir uma linha com esses registros em attendance
-    # retorna a attendance
     return attendance
 
 # --- READ (get)
 
-def get_attendances_by_student(id, date=None):
+def get_attendances_by_student(id):
     student_csv = get_attendance_df()
     attenddance_list = []
     for _ in student_csv.iterrows():
@@ -140,14 +106,33 @@ def get_students_by_subject(subject_name):
             student_list_by_subject.append(row)
     return student_list_by_subject
 
-def get_students_by_date(chosen_date): #x
+def get_students_by_date(chosen_date): 
     attendance_csv = get_attendance_df()
     student_list_by_date = []
     for row in attendance_csv.iterrows():
         date_saved = attendance_csv['date']
         if chosen_date == date_saved:
             student_list_by_date.append(row)
-    return row      
+    return student_list_by_date
+
+def get_students_by_subject(chosen_subject): 
+    attendance_csv = get_attendance_df()
+    student_list_by_subject = []
+    for row in attendance_csv.iterrows():
+        subject = attendance_csv['subject']
+        if chosen_subject == subject:
+            student_list_by_subject.append(row)
+    return student_list_by_subject
+
+def get_students_by_class(chosen_class): 
+    attendance_csv = get_attendance_df()
+    student_list_by_class = []
+    for row in attendance_csv.iterrows():
+        student_class = attendance_csv['class']
+        if chosen_class == student_class:
+            student_list_by_class.append(row)
+    return student_list_by_class
+
 #Criar outras funções para trazer a lista de várias attendances por:
     # Class -> get_attendances_by_class
     # Subject -> get_attendances_by_subject
@@ -182,3 +167,5 @@ def delete_attendace(id):
             attendance_csv.drop([counter], axis=0, inplace=True)
             return row
         counter += 1
+
+#Refazer a função com base no id por linha do attendance.csv
