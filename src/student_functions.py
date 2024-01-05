@@ -81,7 +81,7 @@ def get_presence_by_subject(id) :
         if student_id == id:
             if presence_subject == subject:
                 ct += 1
-                if ct <= 10:
+                if ct <= 5:
                     if attendance == 1:
                         with column:
                             st.markdown(f" Presente")
