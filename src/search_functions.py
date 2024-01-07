@@ -1,7 +1,7 @@
 import streamlit as st
 from student_profile import show_profile
 from db.connection import get_students_df
-from student_functions import get_absences_by_student, get_student_notes
+from student_functions import get_absences_by_student, get_student_notes, create_student_note
 
 def student_search(name) :
     df  = get_students_df()
@@ -21,3 +21,9 @@ def student_search(name) :
                 get_absences_by_student(student_id)
                 st.markdown("""---""")
                 get_student_notes(student_id)
+                with st.form("my form"):
+                    note = st.text_input("Anotações") 
+                    save = st.form_submit_button("Salvar")
+                    if save:    
+                        create_student_note(note, "Matematica", student_id)
+                        
