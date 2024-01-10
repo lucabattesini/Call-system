@@ -24,6 +24,18 @@ def get_student_absence_sum(id) :
             ct += 1
     return ct
 
+def get_student_presence_by_day(id) :                                                            
+    df = get_attendance_df()
+    attendance_list = []
+    for _, row in df.iterrows():
+        student_id = row['student_id']
+        attendance = row['attendance']
+        if student_id == id and attendance == 1:
+            attendance_list.append(1)
+        elif student_id == id and attendance == 0:
+            attendance_list.append(0)
+    return attendance_list
+
 def get_student_absence_sum_by_week(id, day) :
     week_list = dateweek(day)
     df = get_attendance_df()
