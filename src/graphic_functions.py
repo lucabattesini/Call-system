@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from student_functions import get_student_presence_by_day
+from student_functions import get_student_presence_by_day, get_student_presence_and_absence
 
 def presence_list_by_day_function(id) :
     presence_list = get_student_presence_by_day(id)
@@ -24,3 +24,8 @@ def create_a_graphic_divided_by_day(id) :
     presences_by_day = presence_list_by_day_function(id)
     df = pd.DataFrame(presences_by_day, columns = ["Presença"])
     return st.line_chart(df, y="Presença")
+
+def get_presence_percent_bar(id) :
+    percentage = get_student_presence_and_absence(id)
+    bar = st.progress(0, text=f"{percentage}")
+    bar.progress(percentage, text=f"{percentage}")
