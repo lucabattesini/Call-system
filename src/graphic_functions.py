@@ -20,7 +20,7 @@ def presence_list_by_day_function(id) :
             presença_dia = 0
     return presence_list_by_day
 
-def create_a_graphic_divided_by_week(id) :
+def create_a_graphic_divided_by_day(id) :
     presences_by_day = presence_list_by_day_function(id)
     df = pd.DataFrame(presences_by_day, columns = ["Presença"])
     return st.line_chart(df, y="Presença")
