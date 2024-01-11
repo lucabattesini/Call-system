@@ -69,7 +69,7 @@ def get_student_presence_and_absence(id) :
     absences = get_student_absence_sum(id)
     all_classes = presences + absences
     presences_first_part_formula = presences * 100
-    presences_percentage = presences_first_part_formula / all_classes
+    presences_percentage = int(presences_first_part_formula / all_classes)
     return presences_percentage
 
 def get_student_presence_and_absence_by_week(id) :
