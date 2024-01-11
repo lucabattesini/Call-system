@@ -2,7 +2,7 @@ import streamlit as st
 from student_profile import show_profile
 from db.connection import get_students_df
 from student_functions import get_absences_by_student, get_student_notes, create_student_note
-from graphic_functions import create_a_graphic_divided_by_day
+from graphic_functions import create_a_graphic_divided_by_day, get_presence_percent_bar
 
 def student_search(name) :
     df  = get_students_df()
@@ -19,6 +19,7 @@ def student_search(name) :
         if student_name_lower == input_student_name_lower:
             if st.button(f"### {student_name}  -  {class_full_name}"):
                 show_profile(student_name, class_full_name)
+                get_presence_percent_bar(student_id)
                 create_a_graphic_divided_by_day(student_id)
                 get_absences_by_student(student_id)
                 st.markdown("""---""")
