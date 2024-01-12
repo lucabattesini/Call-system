@@ -23,6 +23,10 @@ def student_search(name) :
                 get_presence_percent_bar(student_id)
                 st.markdown("### ")
                 create_a_graphic_divided_by_day(student_id)
+                cl, cl2, cl3 = st.columns(3)
+                with cl2:
+                    st.text("          Dividido por dias")
+                st.markdown("---")
                 st.title("Ultimas 5 faltas")
                 get_absences_by_student(student_id)
                 st.markdown("### ")
