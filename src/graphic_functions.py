@@ -27,5 +27,5 @@ def create_a_graphic_divided_by_day(id) :
 
 def get_presence_percent_bar(id) :
     percentage = get_student_presence_and_absence(id)
-    bar = st.progress(0, text=f"{percentage}")
+    bar = st.progress(0, text=f"{percentage}%")
     bar.progress(percentage, text=f"{percentage}")
