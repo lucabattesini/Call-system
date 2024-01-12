@@ -19,6 +19,7 @@ def student_search(name) :
         if student_name_lower == input_student_name_lower:
             if st.button(f"### {student_name}  -  {class_full_name}"):
                 show_profile(student_name, class_full_name)
+                st.markdown("### ")
                 get_presence_percent_bar(student_id)
                 st.markdown("### ")
                 create_a_graphic_divided_by_day(student_id)
