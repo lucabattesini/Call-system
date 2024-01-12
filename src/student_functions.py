@@ -80,7 +80,7 @@ def get_student_presence_and_absence_by_week(id) :
     presences_percentage = presences_first_part_formula / all_classes
     return all_classes, presences_percentage
 
-def get_absences_by_student(id) :
+def get_lasts_absences_by_student(id) :
     df = get_attendance_df()
     column, column2 = st.columns(2)
     ct = 0
