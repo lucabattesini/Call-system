@@ -23,6 +23,7 @@ def student_search(name) :
                 create_a_graphic_divided_by_day(student_id)
                 st.title("Ultimas 5 faltas")
                 get_absences_by_student(student_id)
+                st.markdown("### ")
                 with st.form("Notes"):
                     note = st.text_input("Adicione uma nova anotação") 
                     save = st.form_submit_button("Salvar")
