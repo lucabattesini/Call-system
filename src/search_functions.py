@@ -23,10 +23,11 @@ def student_search(name) :
                 create_a_graphic_divided_by_day(student_id)
                 get_absences_by_student(student_id)
                 st.markdown("""---""")
-                get_student_notes(student_id)
                 with st.form("my form"):
-                    note = st.text_input("Anotações") 
+                    note = st.text_input("Adicione uma nova anotação") 
                     save = st.form_submit_button("Salvar")
                     if save:    
                         create_student_note(note, "Matematica", student_id)
+                    st.title("Anotações")
+                    get_student_notes(student_id)
                         
