@@ -20,6 +20,7 @@ def student_search(name) :
             if st.button(f"### {student_name}  -  {class_full_name}"):
                 show_profile(student_name, class_full_name)
                 get_presence_percent_bar(student_id)
+                st.markdown("### ")
                 create_a_graphic_divided_by_day(student_id)
                 st.title("Ultimas 5 faltas")
                 get_absences_by_student(student_id)
