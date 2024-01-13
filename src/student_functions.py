@@ -99,9 +99,9 @@ def get_lasts_absences_by_student(id) :
                     absences_list.append(date)
     for date in absences_list :
         with column:
-            st.text("Ausente")
+            st.markdown("Ausente")
         with column2:
-            st.text(f"{date}")
+            st.markdown(f"{date}")
 
 
 def create_student_note(note, subject, id) :
