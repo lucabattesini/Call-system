@@ -84,6 +84,7 @@ def get_lasts_absences_by_student(id) :
     df = get_attendance_df()
     column, column2 = st.columns(2)
     ct = 0
+    absences_list = []
     for _, row in df.iterrows():
         student_id = row['student_id']
         date = row['date']
@@ -92,10 +93,16 @@ def get_lasts_absences_by_student(id) :
             if attendance == 0:
                 ct += 1
                 if ct <= 5:
-                    with column:
-                        st.markdown(f" Ausente")
-                    with column2:
-                        st.markdown(f" Data: {date}")
+                    absences_list.append(date)
+                elif ct > 5:
+                    absences_list.pop(0)
+                    absences_list.append(date)
+    for date in absences_list :
+        with column:
+            st.text("Ausente")
+        with column2:
+            st.text(f"{date}")
+
 
 def create_student_note(note, subject, id) :
     df = get_notes_df()
