@@ -115,8 +115,8 @@ def create_student_note(note, subject, id) :
 
 def get_student_notes(id) :
     df = get_notes_df()
-    column, column2 = st.columns(2)
     for _, row in df.iterrows():
+        column, column2 = st.columns(2)
         student_id = row['student_id']
         if student_id == id:
             student_notes = row['notes']
