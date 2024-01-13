@@ -1,7 +1,7 @@
 import streamlit as st
 from student_profile import show_profile
 from db.connection import get_students_df
-from student_functions import get_absences_by_student, get_student_notes, create_student_note
+from student_functions import get_lasts_absences_by_student, get_student_notes, create_student_note
 from graphic_functions import create_a_graphic_divided_by_day, get_presence_percent_bar
 
 def student_search(name) :
@@ -28,7 +28,7 @@ def student_search(name) :
                     st.text("          Dividido por dias")
                 st.markdown("---")
                 st.title("Ultimas 5 faltas")
-                get_absences_by_student(student_id)
+                get_lasts_absences_by_student(student_id)
                 st.markdown("### ")
                 with st.form("Notes"):
                     note = st.text_input("Adicione uma nova anotação") 
