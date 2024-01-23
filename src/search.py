@@ -1,4 +1,3 @@
-import pandas as pd
 import streamlit as st
 from search_functions import student_search
 
