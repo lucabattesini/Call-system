@@ -7,6 +7,7 @@ def presence_list_by_day_function(id) :
     presença_dia = 0
     presence_list_by_day  = []
     ct = 0
+
     for presence in presence_list:
         ct += 1
         if ct < 5:
@@ -18,11 +19,13 @@ def presence_list_by_day_function(id) :
                 presença_dia +=1
             presence_list_by_day.append(presença_dia)
             presença_dia = 0
+
     return presence_list_by_day
 
 def create_a_graphic_divided_by_day(id) :
     presences_by_day = presence_list_by_day_function(id)
     df = pd.DataFrame(presences_by_day, columns = ["Presença"])
+    
     return st.line_chart(df, y="Presença")
 
 def get_presence_percent_bar(id) :
