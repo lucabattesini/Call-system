@@ -1,4 +1,5 @@
 import datetime as datetime
+import streamlit as st
 
 subjects_list = ['Matemática','Inglês','Português','Química','Física','Biologia','Educação','Geografia','História','Sociologia','Filosofia']
 classes_list = ['1EMA', '2EMA', '3EMA', '1EMB', '2EMB', '3EMB']
@@ -37,3 +38,7 @@ def dateweek(fdata) :
 
 
 
+
+def me() :
+    me = st.markdown('''**Desenvolvido por Luca Battesini**''')
+    return me
