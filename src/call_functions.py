@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import datetime as datetime
 from utils import subjects_list
-from db.connection import get_attendance_df, save_attendance_df, save_students_summary_df
+from db.connection import save_attendance_df, save_students_summary_df
 
 def call_list_buttons(attendance, student_list, materias, today, classes):
     for index, row in student_list.iterrows():
