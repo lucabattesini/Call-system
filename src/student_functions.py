@@ -68,20 +68,25 @@ def get_student_presence_and_absence(id) :
     presences = get_student_presence_sum(id)
     absences = get_student_absence_sum(id)
     all_classes = presences + absences
+
     presences_first_part_formula = presences * 100
     presences_percentage = int(presences_first_part_formula / all_classes)
+
     return presences_percentage
 
 def get_student_presence_and_absence_by_week(id) :
     presences = get_student_presence_sum_by_week(id)
     absences = get_student_absence_sum_by_week(id)
     all_classes = presences + absences
+
     presences_first_part_formula = presences * 100
     presences_percentage = presences_first_part_formula / all_classes
+    
     return all_classes, presences_percentage
 
 def get_lasts_absences_by_student(id) :
     df = get_attendance_df()
+
     column, column2 = st.columns(2)
     ct = 0
     absences_list = []
@@ -89,6 +94,7 @@ def get_lasts_absences_by_student(id) :
         student_id = row['student_id']
         date = row['date']
         attendance = row['attendance']
+
         if student_id == id:
             if attendance == 0:
                 ct += 1
@@ -97,6 +103,7 @@ def get_lasts_absences_by_student(id) :
                 elif ct > 5:
                     absences_list.pop(0)
                     absences_list.append(date)
+
     for date in absences_list :
         with column:
             st.markdown("Ausente")
@@ -107,17 +114,21 @@ def get_lasts_absences_by_student(id) :
 def create_student_note(note, subject, id) :
     df = get_notes_df()
     df.head()
+
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
     new_line = pd.DataFrame({'student_id': [id], 'notes': [note], 'subject': [subject], 'date': [ftoday]})
+
     df = pd.concat([df, new_line], axis=0, ignore_index=True)
     save_notes_df(df)
 
 def get_student_notes(id) :
     df = get_notes_df()
+
     for _, row in df.iterrows():
         column, column2 = st.columns(2)
         student_id = row['student_id']
+
         if student_id == id:
             student_notes = row['notes']
             student_notes_subject = row['subject']
