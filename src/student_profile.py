@@ -28,7 +28,6 @@ def get_students(classId):
     return students_from_class
 
 def get_student(id):
-    students = get_students_df
     attendance = get_attendance_df
     student = { 'name': "", 'grade': 0, 'attendance': [], 'total_attendance_per_class': []}
     for row in student.iterrows():
@@ -52,4 +51,3 @@ def get_student(id):
     # procura o estudante com o id passado
     # preenche no dicionário student os campos certos
     return student
-

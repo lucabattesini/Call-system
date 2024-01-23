@@ -16,8 +16,6 @@ def select_class_subject() :
     today = datetime.now()
     ftoday = today.strftime('%d/%m/%y')
 
-    date_week = dateweek(today)
-
     st.markdown("# Selecione uma turma e uma matéria")
 
     coluna, coluna1 = st.columns(2)
