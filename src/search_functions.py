@@ -32,9 +32,9 @@ def student_search(name) :
                 st.markdown("### ")
                 with st.form("Notes"):
                     note = st.text_input("Adicione uma nova anotação") 
-                    save = st.form_submit_button("Salvar")
-                    if save:    
-                        create_student_note(note, "Matematica", student_id)
+                    save = st.form_submit_button("Salvar", on_click=create_student_note(note, "Matematica", student_id))
+                    #if save and note:
+                        #print("recebo")
+                        #create_student_note(note, "Matematica", student_id)
                     st.title("Anotações")
                     get_student_notes(student_id)
-                        
