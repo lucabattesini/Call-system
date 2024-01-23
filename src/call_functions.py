@@ -27,8 +27,6 @@ def call_list_buttons(attendance, student_list, materias, today, classes):
 
             st.markdown('---')
 
-
-
 def call_list_sum(attendance, student_list):
     for _, row in student_list.iterrows():
         id = row['student_id']
@@ -57,15 +55,8 @@ def pages_sidebar(attendance, student_list, subject, lista, classes):
             if st.button("Salvar", key='ola'):
                 call_list_sum(attendance, student_list)
                 
-                
-# --- CREATE
 def create_attendance(row, presence, attendance, student_id, class_id, subject_id, date):
-    """Create a new line to attendance
 
-    Returns:
-    The new line of attendance
-
-   """
     row = pd.DataFrame({'student_id': [student_id],'attendance': [presence],'date': [date], 'subject': [subject_id], 'class': [class_id]})
     attendance = pd.concat([attendance, row], axis=0, ignore_index=True)
     save_attendance_df(attendance)
