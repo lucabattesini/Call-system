@@ -40,5 +40,6 @@ def dateweek(fdata) :
 
 
 def me() :
+    line = st.markdown("---")
     me = st.markdown('''**Desenvolvido por Luca Battesini**''')
-    return me
+    return line, me
