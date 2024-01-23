@@ -1,4 +1,3 @@
-import pandas as pd
 import streamlit as st
 from datetime import datetime
 from call_functions import pages_sidebar
@@ -17,7 +16,6 @@ def select_class_subject() :
     ftoday = today.strftime('%d/%m/%y')
 
     st.markdown("# Selecione uma turma e uma matéria")
-
     coluna, coluna1 = st.columns(2)
 
     with coluna:
