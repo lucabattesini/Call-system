@@ -9,9 +9,11 @@ def dateweek(fdata) :
     week_start = fdata - datetime.timedelta(days=week_day)
     temporary_list = [1, 2, 3, 4, 5]
     day = 0
+
     week_days = []
     week_days_name = []
     formated_week_days = []
+    
     translated_names = {
         "Monday": "Segunda-feira",
         "Tuesday": "Terça-feira",
@@ -34,6 +36,7 @@ def dateweek(fdata) :
         name_of_day = day_name.strftime("%A")
         name_in_portuguese = translated_names.get(name_of_day)
         week_days_name.append(name_in_portuguese)
+
     return formated_week_days
 
 
