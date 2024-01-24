@@ -37,12 +37,14 @@ def student_search(name) :
 
                 get_lasts_absences_by_student(student_id)
                 st.markdown("### ")
-                with st.form("Notes"):
-                    note = st.text_input("Adicione uma nova anotação") 
-                    save = st.form_submit_button("Salvar", on_click=create_student_note(note, "Matematica", student_id))
+                cl, cl2, cl3 = st.columns(3)
+                with cl2:
+                    note = st.text_input("Adicione uma nova anotação")
+                #with st.container(): 
+                    #save = st.button("Salvar", on_click=create_student_note(note, "Matematica", student_id))
                     #if save and note:
                         #print("recebo")
                         #create_student_note(note, "Matematica", student_id)
-                    st.title("Anotações")
+                    #st.title("Anotações")
 
-                    get_student_notes(student_id)
+                    #get_student_notes(student_id)
